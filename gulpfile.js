@@ -50,19 +50,27 @@ gulp.task('scripts', function() {
         .pipe(rename('compile.js'))
         .pipe(uglify())
         .pipe(gulp.dest('build/js'));
-
 });
 
 // Move index
 gulp.task('move_html', function(){
     return gulp.src('src/index.html')
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/'));
+});
+
+// Move index
+gulp.task('move_html', function(){
+    return gulp.src('src/index.html')
+    .pipe(gulp.dest('build/'));
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('app/*.js', ['lint', 'scripts']);
     gulp.watch('app/*.scss', ['sass']);
+
+    gulp.watch('src/*.scss', ['sass']);
+    gulp.watch('src/*.html', ['move_html']);
 });
 
 // Default Task
