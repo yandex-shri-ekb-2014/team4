@@ -2,5 +2,8 @@
 @import '_layout.scss';
 @import '_now.scss';
 @import '_header.scss';
-@import 'city-select';
+<<<<<<< HEAD
 @import '_forecast_tabs.scss';
+=======
+@import 'city-select';
+>>>>>>> b163af00cf51d4960708c77b2eaeccb74bba87b0
