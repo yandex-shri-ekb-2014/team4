@@ -1,0 +1,72 @@
+.direct
+{
+    margin: 10px 0;
+
+    &__link-a
+    {
+        color: #4c4c4c;
+    }
+
+    &__link-a:hover
+    {
+        text-decoration: none;
+    }
+
+    &__row
+    {
+        background: #f6f5f3;
+        margin: 10px 0;
+        padding: 18px 15px;
+        content: '';
+        display: table;
+    }
+
+    &__block
+    {
+        width: 32%;
+        float: left;
+
+        &-middle
+        {
+            margin: 0 2%;
+        }
+
+        &-img
+        {
+            float: left;
+            max-width: 50%;
+            margin: 0 10px 0 0;
+        }
+
+        &__info
+        {
+            float: left;
+            width: 50%;
+        }
+
+        &-title
+        {
+            font: 300 16px Verdana,Arial,Helvetica,sans-serif;
+            color: #888;
+            margin: -5px 0 0;
+        }
+
+        &-text
+        {
+            color: #333;
+            margin: 9px 0  8px;
+        }
+
+        &-link
+        {
+            font-size: 11px;
+            color: #2f542f;
+            text-decoration: none;
+        }
+
+        &-link:hover
+        {
+            text-decoration: underline;
+        }
+    }
+}
