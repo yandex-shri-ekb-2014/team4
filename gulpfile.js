@@ -9,7 +9,6 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var bf = require('gulp-browserify');
-var clean = require('gulp-clean');
 var ignore = require('gulp-ignore');
 var rimraf = require('gulp-rimraf');
 
@@ -54,6 +53,12 @@ gulp.task('scripts', function() {
 
 });
 
+// Move index
+gulp.task('move_html', function(){
+    return gulp.src('src/index.html')
+    .pipe(gulp.dest('build/'))
+});
+
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('app/*.js', ['lint', 'scripts']);
@@ -61,5 +66,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-//gulp.task('default', ['lint', 'sass', 'bf', 'scripts', 'watch']);
-gulp.task('default', ['watch','sass']);
+gulp.task('default', ['lint', 'sass', 'bf', 'scripts', 'move_html', 'watch']);
