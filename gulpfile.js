@@ -2,15 +2,16 @@
 var gulp = require('gulp');
 
 // Include Our Plugins
-var jshint = require('gulp-jshint');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-var bf = require('gulp-browserify');
-var ignore = require('gulp-ignore');
-var rimraf = require('gulp-rimraf');
+var jshint = require('gulp-jshint'),
+sass = require('gulp-sass'),
+concat = require('gulp-concat'),
+uglify = require('gulp-uglify'),
+rename = require('gulp-rename'),
+autoprefixer = require('gulp-autoprefixer'),
+bf = require('gulp-browserify'),
+ignore = require('gulp-ignore'),
+rimraf = require('gulp-rimraf'),
+livereload = require('gulp-livereload');
 
 //Lint Task
 gulp.task('lint', function() {
@@ -66,12 +67,14 @@ gulp.task('move_images', function(){
 
 // Watch Files For Changes
 gulp.task('watch', function() {
+    livereload.listen();
     gulp.watch('app/*.js', ['lint', 'scripts']);
     gulp.watch('app/*.scss', ['sass']);
 
     gulp.watch('src/*.scss', ['sass']);
     gulp.watch('src/**/*.png', ['move_images']);
     gulp.watch('src/*.html', ['move_html']);
+    gulp.watch('src/**').on('change', livereload.changed);
 });
 
 // Default Task
