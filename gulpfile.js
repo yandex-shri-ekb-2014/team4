@@ -58,10 +58,10 @@ gulp.task('move_html', function(){
     .pipe(gulp.dest('build/'));
 });
 
-// Move index
-gulp.task('move_html', function(){
-    return gulp.src('src/index.html')
-    .pipe(gulp.dest('build/'));
+// Move images
+gulp.task('move_images', function(){
+    return gulp.src('src/**/*.png')
+    .pipe(gulp.dest('build/images'));
 });
 
 // Watch Files For Changes
@@ -70,6 +70,7 @@ gulp.task('watch', function() {
     gulp.watch('app/*.scss', ['sass']);
 
     gulp.watch('src/*.scss', ['sass']);
+    gulp.watch('src/**/*.png', ['move_images']);
     gulp.watch('src/*.html', ['move_html']);
 });
 
