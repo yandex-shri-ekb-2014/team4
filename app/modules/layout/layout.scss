@@ -114,3 +114,65 @@ td
 {
     background-color: #ffeaae;
 }
+
+.layout__search__label
+{
+    line-height: 29px;
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 2px;
+
+    background: #ffca00;
+}
+
+.layout__search__label__link
+{
+    font-size: 16px;
+    line-height: 31px;
+
+    display: inline-block;
+
+    padding: 0 15px;
+
+    text-decoration: none;
+
+    color: #000;
+    background: #fff;
+}
+
+.layout__search__label:before
+{
+    position: absolute;
+    top: 0;
+    right: -6px;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+
+    color: #ffca00;
+    border-width: 17px 0 17px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ffca00;
+}
+
+.layout__search__label:after
+{
+    position: absolute;
+    top: 2px;
+    right: -4px;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+
+    color: #fff;
+    border-width: 15px 0 15px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+}
