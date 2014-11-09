@@ -1,3 +1,13 @@
+.header
+{
+    margin-bottom: 50px;
+}
+
+.header__logo
+{
+    float: left;
+}
+
 .header_search__label
 {
     line-height: 29px;
@@ -5,7 +15,9 @@
     position: relative;
 
     display: inline-block;
+    float: left;
 
+    margin-left: 24px;
     padding: 2px;
 
     background: #ffca00;
@@ -58,4 +70,30 @@
     border-width: 15px 0 15px 6px;
     border-style: solid;
     border-color: transparent transparent transparent #fff;
+}
+
+.header_search__input
+{
+    font-size: 15px;
+
+    float: left;
+
+    width: 190px;
+    height: 31px;
+    margin-left: -6px;
+
+    text-indent: 14px;
+
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.button-search
+{
+    font-size: 15px;
+
+    height: 35px;
+
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
