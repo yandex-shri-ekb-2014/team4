@@ -21,7 +21,7 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('app/main.scss')
+    return gulp.src('src/base.scss')
         .pipe(sass())
         .pipe(rename('main.css'))
         .pipe(autoprefixer({
