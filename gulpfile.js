@@ -9,57 +9,69 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var bf = require('gulp-browserify');
-var clean = require('gulp-clean');
 var ignore = require('gulp-ignore');
 var rimraf = require('gulp-rimraf');
 
 //Lint Task
 gulp.task('lint', function() {
-   return gulp.src('../app/*.js')
+   return gulp.src('app/*.js')
        .pipe(jshint())
        .pipe(jshint.reporter('default'));
 });
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('../app/*.scss')
+    return gulp.src('app/main.scss')
         .pipe(sass())
-        .pipe(rename('all.min.css'))
+        .pipe(rename('main.css'))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('../build/css'));
+        .pipe(gulp.dest('build/css'));
 
 });
 
 // Browserify
 gulp.task('bf', function () {
-    return gulp.src(['../app/router.js'], {read: true})
+    return gulp.src(['app/router.js'], {read: true})
         // .pipe(browserify({
         //     debug: true,
         //     transform: ['jstify'] // hbsify, нужно будет погуглить пакет, который за это отвечает, он так и называется вроде
         // }))
         .pipe(rename('compile.js'))
-        .pipe(gulp.dest('../build/js'));
+        .pipe(gulp.dest('build/js'));
 
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('../build/js/compile.js')
+    return gulp.src('build/js/compile.js')
         .pipe(rename('compile.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('../build/js'));
+        .pipe(gulp.dest('build/js'));
+});
 
+// Move index
+gulp.task('move_html', function(){
+    return gulp.src('src/index.html')
+    .pipe(gulp.dest('build/'));
+});
+
+// Move index
+gulp.task('move_html', function(){
+    return gulp.src('src/index.html')
+    .pipe(gulp.dest('build/'));
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('../app/*.js', ['lint', 'scripts']);
-    gulp.watch('../app/*.scss', ['sass']);
+    gulp.watch('app/*.js', ['lint', 'scripts']);
+    gulp.watch('app/*.scss', ['sass']);
+
+    gulp.watch('src/*.scss', ['sass']);
+    gulp.watch('src/*.html', ['move_html']);
 });
 
 // Default Task
-//gulp.task('default', ['lint', 'sass', 'bf', 'scripts', 'watch']);
-gulp.task('default', ['watch','sass']);
+gulp.task('default', ['lint', 'sass', 'bf', 'scripts', 'move_html', 'watch']);
