@@ -1,0 +1,59 @@
+.forecast_short {
+    &__day {
+        float: left;
+        width: 106px;
+
+        &-weekstart {
+            margin-left: 20px;
+        }
+    }
+
+    &__weekday {
+        font-size: 22px;
+
+        &-weekend {
+            color: red;
+        }
+    }
+
+    &__date {
+        font-size: 13px;
+
+        &-weekend {
+            color: red;
+        }
+    }
+
+    &__weather {
+        &-box {
+            height: 112px;
+            background-color: #fae5aa;
+        }
+
+        &-icon {
+            width: 27px;
+            height: 27px;
+            margin: 10px 12px 0 12px;
+        }
+
+        &-text {
+            height: 32px;
+            margin: 7px 10px 0 10px;
+            font-size: 10px;
+        }
+
+        &-temp {
+            margin: 10px 10px 0 10px;
+            font-size: 16px;
+        }
+
+        &-temp-night {
+            height: 29px;
+            padding: 0 10px;
+            line-height: 29px;
+            font-size: 13px;
+            color: #6d6e6e;
+            background-color: #f7f3d3;
+        }
+    }
+}
