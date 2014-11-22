@@ -2,29 +2,43 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
+var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var isProduction = -1 !== process.argv.indexOf('--prod');
 
 gulp.task('sass', function() {
-    return gulp.src('src/styles/base.scss')
+    var stream = gulp.src('src/styles/base.scss')
         .pipe(sass())
         .pipe(rename('style.css'))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
+
+    if (isProduction) {
+        stream.pipe(minifycss());
+    }
+
+    stream
         .pipe(gulp.dest('assets/css'))
         .pipe(connect.reload());
 });
 
 gulp.task('browserify', function () {
-    return gulp.src(['src/router.js'], {read: true})
-        // .pipe(browserify({
-        //     debug: true,
-        //     transform: ['jstify'] // hbsify, нужно будет погуглить пакет, который за это отвечает, он так и называется вроде
-        // }))
-        .pipe(rename('compile.js'))
+    var stream = gulp.src(['src/router.js'], {read: true})
+        .pipe(browserify({
+            debug: true,
+            transform: ['hbsify'],
+        }))
+        .pipe(rename('app.js'));
+
+    if (isProduction) {
+        stream.pipe(uglify());
+    }
+
+    stream
         .pipe(gulp.dest('assets/js'))
         .pipe(connect.reload());
 
@@ -41,4 +55,5 @@ gulp.task('watch', function () {
     gulp.watch(['src/**/*.scss'], ['sass']);
 });
 
-gulp.task('default', ['sass', 'browserify', 'connect', 'watch']);
+gulp.task('build', ['sass', 'browserify']);
+gulp.task('default', ['build', 'connect', 'watch']);
