@@ -56,6 +56,9 @@ gulp.task('connect', function () {
 gulp.task('watch', function () {
     gulp.watch(['src/**/*.{js,hbs}'], ['browserify']);
     gulp.watch(['src/**/*.scss'], ['sass']);
+    gulp.watch(['index.html'], function () {
+        gulp.src('index.html').pipe(connect.reload());
+    });
 });
 
 gulp.task('build', ['sass', 'browserify']);
