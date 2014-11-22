@@ -11,11 +11,13 @@ var isProduction = -1 !== process.argv.indexOf('--prod');
 gulp.task('sass', function() {
     var stream = gulp.src('src/styles/base.scss')
         .pipe(sass())
+        .on('error', console.log)
         .pipe(rename('style.css'))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
+        .on('error', console.log);
 
     if (isProduction) {
         stream.pipe(minifycss());
@@ -32,6 +34,7 @@ gulp.task('browserify', function () {
             debug: true,
             transform: ['hbsify'],
         }))
+        .on('error', console.log)
         .pipe(rename('app.js'));
 
     if (isProduction) {
