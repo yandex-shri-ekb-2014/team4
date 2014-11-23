@@ -1,4 +1,5 @@
 var Handlebars = require('hbsfy/runtime');
+var datef = require('datef');
 
 Handlebars.registerHelper('weatherIcon', function (icon) {
     return 'http://ekb.shri14.ru/icons/' + icon + '.svg';
@@ -14,4 +15,7 @@ Handlebars.registerHelper('ifCond', function(v1, v2, options) {
         return options.fn(this);
     }
     return options.inverse(this);
+
+Handlebars.registerHelper('datef', function (format, date) {
+    return datef(format, date);
 });

@@ -15,6 +15,7 @@
     "gulp-connect": "~2.2.0",
     "gulp-minify-css": "~0.3.11",
     "hbsfy": "~2.2.0",
-    "handlebars": "~2.0.0"
+    "handlebars": "~2.0.0",
+    "datef": "0.0.5"
   }
 }
