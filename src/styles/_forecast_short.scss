@@ -1,4 +1,9 @@
 .forecast_short {
+
+    position: relative;
+    display: block;
+    margin-top: 60px;
+
     &__day {
         float: left;
         width: 106px;
