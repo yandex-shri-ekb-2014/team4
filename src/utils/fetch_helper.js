@@ -6,6 +6,7 @@ var fetch = function (locality) {
     var deferred = $.Deferred();
 
     $.ajax('http://ekb.shri14.ru/api/localities/' + locality)
+        .error(deferred.reject)
         .success(function (data) {
             deferred.resolve({
                 today: new FactModel(data.fact),
