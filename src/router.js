@@ -1,6 +1,5 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
-var now_view = require('./views/now_view.js')
 
 Backbone.$ = $;
 
