@@ -1,7 +1,15 @@
+var Backbone = require('backbone');
 var Router = require('./router');
+var StateModel = require('./models/state');
+
+Backbone.$ = require('jquery');
 
 var initialize = function () {
-    new Router();
+    var state = new StateModel();
+
+    new Router({state: state});
+
+    Backbone.history.start();
 }
 
 if (window) {
