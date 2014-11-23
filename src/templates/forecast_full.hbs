@@ -1,0 +1,14 @@
+<thead class="forecast_full__header">
+    <tr class="forecast_full__header-row">
+        <td colspan="5"></td>
+        <td>давление, мм рт. ст.</td>
+        <td>влажность</td>
+        <td>ветер, м/c</td>
+    </tr>
+</thead>
+<tbody>
+{{#each days}}
+    {{{ this }}}
+    <tr><td></td><tr>
+{{/each}}
+</tbody>
