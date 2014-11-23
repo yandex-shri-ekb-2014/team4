@@ -6,7 +6,7 @@ NowView = Backbone.View.extend({
     el: $(".current-weather"),
 
     initialize: function() {
-        //console.log(nowTemplate({}));
+        this.render();
     },
 
     template: function() {
@@ -14,7 +14,8 @@ NowView = Backbone.View.extend({
     },
 
     render: function() {
-        console.log(this.template);
+        console.log(nowTemplate());
+        this.el.html(nowTemplate());
     }
 });
 

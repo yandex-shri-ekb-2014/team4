@@ -26,6 +26,7 @@ var initialize = function () {
     });
 
     Backbone.history.start();
+}
 
 if (window) {
     window.onload = initialize;
