@@ -6,6 +6,7 @@ var fetchHelper = require('./utils/fetch_helper');
 var ForecastTabView = require('./views/forecast_tab_view');
 var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
+var ForecastHoursView = require('./views/forecast_hours');
 var NowView = require('./views/now');
 
 require('./utils/template_helper');
@@ -21,19 +22,28 @@ var initialize = function () {
     fetchHelper(state.get('locality')).then(function (data) {
         new ForecastShortView({
             el: $('.forecast_short'),
-            collection: data.forecast
+            collection: data.forecast,
+            state: state,
         });
 
         new ForecastFullView({
             el: $('.forecast_full'),
-            collection: data.forecast
+            collection: data.forecast,
+            state: state,
+        });
+
+        new ForecastHoursView({
+            el: $('.forecast_hours'),
+            collection: data.forecast,
+            state: state,
         });
 
         new NowView({
             el: $('.current-weather'),
             test: data,
             today: data.today,
-            yesterday: data.yesterday
+            yesterday: data.yesterday,
+            state: state,
         });
     });
 

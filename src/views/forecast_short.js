@@ -3,10 +3,20 @@ var Backbone = require('backbone'),
 
 var ForecastShortView = Backbone.View.extend({
 
-    initialize: function () {
+    tabName: 'short',
 
-        console.log(this.collection);
+    initialize: function (options) {
+        options.state.on('change:tab', this.tabChanged, this);
+        this.tabChanged(options.state);
         this.render();
+    },
+
+    tabChanged: function (state) {
+        if (this.tabName === state.get('tab')) {
+            this.$el.show();
+        } else {
+            this.$el.hide();
+        }
     },
 
     render: function() {
