@@ -1,5 +1,5 @@
-{{#each .}}
-    <a href="#{{link}}" class="button tabs__tab tabs__tab_
+{{#each tabs}}
+    <a href="/{{../state.locality}}/{{link}}" class="button tabs__tab tabs__tab_
         {{~#if @first~}}
             left
         {{else}}
@@ -12,7 +12,7 @@
         {{#if class}}
             {{class}}
         {{/if}}
-        {{#ifCond link ../tab}}
+        {{#ifCond link ../state.tab}}
             button-active
         {{/ifCond}}
     ">{{title}}</a>

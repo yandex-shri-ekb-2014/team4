@@ -37,7 +37,7 @@ var initialize = function () {
         });
     });
 
-    Backbone.history.start();
+    Backbone.history.start({pushState: true});
 }
 
 if (window) {
