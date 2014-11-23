@@ -1,6 +1,7 @@
 var $ = require('jquery'),
 Backbone = require('backbone'),
 nowTemplate = require('../templates/now.hbs');
+
 NowView = Backbone.View.extend({
     el: $(".current-weather"),
 
