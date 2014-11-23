@@ -26,105 +26,126 @@
         </div>
         <!--end header-->
 
-        <!--city_select-->
-        <div class="city-select">
-            <div class="city-select__city-name">Екатеринбург</div>
-            <div class="city-select__city-dropdown-group">
-                <div class="city-select__city-other button">Другой город</div>
-                <div class="city-select__city-dropdown">
-                    <span>Последние города</span>
-                    <ul class="city-select__recent-list">
-                        <li class="city-select__recent-list-element city-select__recent-list-element_active">Екатеринбург</li>
-                        <li class="city-select__recent-list-element">Москва</li>
-                        <li class="city-select__recent-list-element">Минск</li>
-                    </ul>
-                    <div class="city-select__city-all">Все города</div>
-                </div>
-            </div>
-        </div>
-        <script>
-            (function() {
-                var citySelector = document.getElementsByClassName('city-select')[0],
-                    cityOther = citySelector.getElementsByClassName('city-select__city-other')[0],
-                    cityDropdown = citySelector.getElementsByClassName('city-select__city-dropdown')[0];
-                cityOther.addEventListener('click', function() {
-                    cityDropdown.style.display = 'block';
-                });
-                cityDropdown.addEventListener('click', function() {
-                    this.style.display = 'none';
-                });
-            })();
-        </script>
-        <!--end city_select-->
+        <!--city_select + now block-->
+        <div class="city_and_now_wrapper">
+            <div class="city_and_now_container">
+                <!--city_select-->
+                <div class="city-select">
+                    <div class="city-select__city-name">Екатеринбург</div>
+                    <div class="city-select__city-dropdown-group">
+                        <div class="city-select__city-other button">Другой город</div>
+                        <div class="city-select__city-dropdown">
+                            <span>Последние города</span>
+                            <ul class="city-select__recent-list">
+                                <li class="city-select__recent-list-element city-select__recent-list-element_active">Екатеринбург</li>
+                                <li class="city-select__recent-list-element">Москва</li>
+                                <li class="city-select__recent-list-element">Минск</li>
+                            </ul>
+                            <div class="city-select__city-all">Все города</div>
+                        </div>
+                    </div>
 
-        <!--now-->
-        <div class="current-weather">
-            <div class="current-weather_columns">
-                <div class="current-weather_column current-weather_column__now">
-                    <div class="current-weather_title">Сейчас</div>
-                    <div class="current-weather_content temp-color_30">
-                        <div class="current-weather_column-container">
-                            <div class="current-weather_temp-value">+30 &deg;C</div>
-                            <div class="current-weather_icon">
-                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
-                                <div class="current-weather_icon__text">малооблачно</div>
 
+                </div>
+                <script>
+                    (function() {
+                        var citySelector = document.getElementsByClassName('city-select')[0],
+                            cityOther = citySelector.getElementsByClassName('city-select__city-other')[0],
+                            cityDropdown = citySelector.getElementsByClassName('city-select__city-dropdown')[0];
+                        cityOther.addEventListener('click', function() {
+                            cityDropdown.style.display = 'block';
+                        });
+                        cityDropdown.addEventListener('click', function() {
+                            this.style.display = 'none';
+                        });
+                    })();
+                </script>
+                <!--end city_select-->
+
+                <!--now-->
+                <div class="current-weather">
+                    <div class="current-weather_columns-wrapper">
+                        <div class="current-weather_columns">
+                            <div class="current-weather_columns_row">
+                                <div class="current-weather_column current-weather_column__now">
+                                    <div class="current-weather_title">Сейчас</div>
+                                    <div class="current-weather_content temp-color_30">
+                                        <div class="current-weather_column-container">
+                                            <div class="current-weather_temp-value">+30 &deg;C</div>
+                                            <div class="current-weather_icon">
+                                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
+                                                <div class="current-weather_icon__text">малооблачно</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="current-weather_column">
+                                    <div class="current-weather_title">Днем</div>
+                                    <div class="current-weather_content temp-color_15">
+                                        <div class="current-weather_column-container">
+                                            <div class="current-weather_temp-value">+15 &deg;C</div>
+                                            <div class="current-weather_icon">
+                                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="current-weather_column">
+                                    <div class="current-weather_title">Вечером</div>
+                                    <div class="current-weather_content temp-color_4">
+                                        <div class="current-weather_column-container">
+                                            <div class="current-weather_temp-value">+4 &deg;C</div>
+                                            <div class="current-weather_icon">
+                                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="current-weather_column">
+                                    <div class="current-weather_title">Ночью</div>
+                                    <div class="current-weather_content temp-color_-2">
+                                        <div class="current-weather_column-container">
+                                            <div class="current-weather_temp-value">-2 &deg;C</div>
+                                            <div class="current-weather_icon">
+                                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="current-weather_column current-weather_column__last">
+                                    <div class="current-weather_content__info">
+                                        <ul>
+                                            <li>Давление: 732 мм рт. ст.</li>
+                                            <li>Ветер: западный, 6.0 м/с (21.6 км/ч)</li>
+                                            <li>Влажность: 93%</li>
+                                            <li>Восход: 08:53 Заход: 16:33</li>
+                                            <li>
+                                                Данные зарегистрированы более получаса назад
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="current-weather_column">
-                    <div class="current-weather_title">Днем</div>
-                    <div class="current-weather_content temp-color_15">
-                        <div class="current-weather_column-container">
-                            <div class="current-weather_temp-value">+15 &deg;C</div>
-                            <div class="current-weather_icon">
-                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
-                            </div>
-                        </div>
+                    <div class="current-weather_footer">
+                        Вчера +10 &deg;
                     </div>
                 </div>
-                <div class="current-weather_column">
-                    <div class="current-weather_title">Вечером</div>
-                    <div class="current-weather_content temp-color_4">
-                        <div class="current-weather_column-container">
-                            <div class="current-weather_temp-value">+4 &deg;C</div>
-                            <div class="current-weather_icon">
-                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="current-weather_column">
-                    <div class="current-weather_title">Ночью</div>
-                    <div class="current-weather_content temp-color_-2">
-                        <div class="current-weather_column-container">
-                            <div class="current-weather_temp-value">-2 &deg;C</div>
-                            <div class="current-weather_icon">
-                                <img src="http://ekb.shri14.ru/icons/bkn_d.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="current-weather_column">
-                    <div class="current-weather_content__info">
-                        <ul>
-                            <li>Давление: 732 мм рт. ст.</li>
-                            <li>Ветер: западный, 6.0 м/с (21.6 км/ч)</li>
-                            <li>Влажность: 93%</li>
-                            <li>Восход: 08:53 Заход: 16:33</li>
-                            <li>
-                                Данные зарегистрированы более получаса назад
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+
+
+
+
+                <!--end now-->
             </div>
-            <div class="current-weather_footer">
-                Вчера +10 &deg;
+            <div class="current-weather_adv-wrapper">
+                <img class="current-weather_adv_image" src="images/adv_right.png" alt="">
             </div>
+
         </div>
-        <!--end now-->
+        <!--end city_select + now block-->
 
         <!--forecast-->
             <!-- tabs -->
