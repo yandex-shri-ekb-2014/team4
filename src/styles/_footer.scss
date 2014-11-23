@@ -1,0 +1,70 @@
+.footer
+{
+    border-top: 1px solid #d6d5d2;
+    color: #666;
+    font-size: 11px;
+
+    &__row
+    {
+        margin: 0 24px;
+    }
+
+    &-link
+    {
+        color: #747eaf;
+        display: block;
+        text-decoration: none;
+        margin: 2px 0;
+
+        &:hover
+        {
+            text-decoration: underline;
+        }
+
+        &-first
+        {
+            margin: 0 0 5px;
+        }
+
+        &-text
+        {
+            display: inline;
+        }
+    }
+
+    &__block
+    {
+        margin: 14px 1% 14px 0;
+
+        &_left
+        {
+            width: 24%;
+            float: left;
+        }
+
+        &_wide
+        {
+            width: 34%;
+            float: left;
+
+            &_statistic
+            {
+                margin: 2px 0;
+                display: block;
+            }
+        }
+
+        &_links
+        {
+            width: 19%;
+            float: left;
+        }
+
+        &_right
+        {
+            width: 19%;
+            float: right;
+            text-align: right;
+        }
+    }
+}
