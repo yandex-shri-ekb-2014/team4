@@ -5,7 +5,7 @@ var tabsTemplate = require('../templates/tabs.hbs');
 var tabs = [
     {
         title: 'кратко',
-        link: 'forecast_short',
+        link: 'forecast_short'
     },
     {
         title: 'подробно',
@@ -13,7 +13,7 @@ var tabs = [
     },
     {
         title: 'наглядно',
-        link: 'forecast_hours',
+        link: 'forecast_hours'
     }
 ];
 
@@ -21,7 +21,7 @@ var ForecastTabView = Backbone.View.extend({
     template: tabsTemplate,
     el: '.tabs',
     events: {
-        //'click .tabs__tab': 'switch'
+        'click .tabs__tab': 'switch'
     },
     initialize: function() {
         this.render();
@@ -44,7 +44,7 @@ var ForecastTabView = Backbone.View.extend({
         }
 
     },
-    /*switch: function(el) {
+    switch: function(el) {
         var $allTabs = this.$el.find('.tabs__tab');
 
         $allTabs.each(function(){
@@ -54,7 +54,7 @@ var ForecastTabView = Backbone.View.extend({
         });
 
         $(el.currentTarget).addClass('button-active');
-    }*/
-});;
+    }
+});
 
 module.exports = ForecastTabView;
