@@ -3,7 +3,7 @@
         float: left;
         width: 106px;
 
-        &-weekstart {
+        &-weekstart:not(:first-of-type) {
             margin-left: 20px;
         }
     }
