@@ -1,92 +1,124 @@
+.city_and_now_wrapper{
+    white-space: nowrap;
+
+    .city_and_now_container{
+        min-width: 50%;
+        display: inline-block;
+        height: 250px;
+    }
+}
+
 .current-weather{
     margin-top: 25px;
-    margin-bottom: 82px;
+    margin-bottom: 62px;
+    overflow: hidden;
 }
+
 .current-weather_columns-wrapper{
-    display: table
-}
-.current-weather_columns{
-    font-size: 0;
-    display: table-row;
-}
+    display: inline-block;
+    vertical-align: top;
 
-.current-weather_column{
-    display: table-cell;
-    font-size: 9px;
+    .current-weather_columns{
+        font-size: 0;
+        display: table;
+        min-width: 690px;
 
-    .current-weather_title{
-        text-transform: uppercase;
-        color: #6d6e6e;
-        padding: 0px 10px 5px;
-    }
-
-    .current-weather_column-container{
-        padding: 20px 10px 30px;
-    }
-
-    .current-weather_content{
-        height: 99px;
-    }
-
-    .current-weather_content__info{
-        position: relative;
-        top: 20px;
-
-        ul{
-            padding-left: 20px;
-            font-size: 13px;
-            color: #6d6e6e;
-
+        .current-weather_columns_row{
+            display: table-row;
         }
 
-        li{
-            list-style-type: none;
-            margin-bottom: 5px;
+        .current-weather_column{
+            display: table-cell;
+            font-size: 9px;
+
+            .current-weather_title{
+                text-transform: uppercase;
+                color: #6d6e6e;
+                padding: 0px 10px 5px;
+            }
+
+            .current-weather_column-container{
+                padding: 20px 10px 30px;
+            }
+
+            .current-weather_content{
+                height: 99px;
+            }
+
+            .current-weather_temp-value{
+                font-size: 14px;
+            }
+
+            .current-weather_icon{
+                img{
+                    width: 28px
+                }
+            }
         }
 
-        li:last-child{
-            margin-top: 10px;
+        .current-weather_column__now{
+            .current-weather_title{
+                font-size: 11px;
+                color: #000;
+                padding: 0px 0px 5px;
+            }
+
+            .current-weather_column-container{
+                padding: 10px 10px;
+            }
+
+            .current-weather_temp-value{
+                font-size: 21px;
+            }
+
+            .current-weather_icon{
+                img{
+                    width: 48px;
+                }
+                .current-weather_icon__text{
+                    float: right;
+                    font-size: 11px;
+                }
+            }
         }
-    }
 
-    .current-weather_temp-value{
-        font-size: 14px;
-    }
+        .current-weather_column__last{
+            .current-weather_content__info{
+                position: relative;
+                top: 20px;
 
-    .current-weather_icon{
-        img{
-            width: 28px
-        }
-    }
-}
+                ul{
+                    padding-left: 20px;
+                    font-size: 13px;
+                    color: #6d6e6e;
+                }
 
-.current-weather_column__now{
-    .current-weather_title{
-        font-size: 14px;
-        color: #000;
-    }
+                li{
+                    list-style-type: none;
+                    margin-bottom: 5px;
+                }
 
-    .current-weather_column-container{
-        padding: 10px 10px 23px;
-    }
+                li:last-child{
+                    margin-top: 10px;
+                }
 
-    .current-weather_temp-value{
-        font-size: 21px;
-    }
-
-    .current-weather_icon{
-        img{
-            width: 48px;
-        }
-        .current-weather_icon__text{
-            float: right;
-            font-size: 11px;
+            }
         }
     }
 }
 
 .current-weather_footer{
     text-transform: uppercase;
-    font-size: 9px;
+    font-size: 10px;
     padding-top: 10px;
+}
+
+.current-weather_adv-wrapper{
+    display: inline-block;
+    vertical-align: top;
+    min-width: 49%;
+    text-align: right;
+
+    .current-weather_adv_img{
+    }
 }
