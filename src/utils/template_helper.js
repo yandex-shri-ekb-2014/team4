@@ -23,3 +23,7 @@ Handlebars.registerHelper('datef', function (format, date) {
 Handlebars.registerHelper('datef', function (format, date) {
     return datef(format, date);
 });
+
+Handlebars.registerHelper('datef', function (format, date) {
+    return datef(format, date);
+});

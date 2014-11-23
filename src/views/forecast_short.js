@@ -10,7 +10,18 @@ var ForecastShortView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.html(forecastShortTemplate({forecast: this.collection}));
+        var output = '',
+            modelDate,
+            tomorrow = new Date().getDate() + 1;
+        this.collection.each(function(mod) {
+            modelDate = mod.get('date').getDate();
+            if (modelDate < tomorrow) {
+                return;
+            }
+            mod.set('isTomorrow', modelDate === tomorrow);
+            output += forecastShortTemplate({model: mod.toJSON()});
+        });
+        this.$el.html(output);
     }
 });
 
