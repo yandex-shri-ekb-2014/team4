@@ -1,5 +1,5 @@
 var Backbone = require('backbone'),
-    forecastFullTemplate = require('../templates/forecast_full.hbs');
+    forecastFullDayTemplate = require('../templates/forecast_full_day.hbs');
 
 var ForecastFullView = Backbone.View.extend({
     initialize: function () {
@@ -7,9 +7,16 @@ var ForecastFullView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.html(forecastFullTemplate({
-            forecast: this.collection
-        }));
+
+        var html = '';
+
+        this.collection.forEach(function (model) {
+            html += forecastFullDayTemplate({
+                model: model.toJSON(),
+            });
+        })
+
+        this.$el.html(html);
     }
 });
 
