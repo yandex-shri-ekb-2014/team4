@@ -9,6 +9,8 @@
 <tbody>
 {{#each days}}
     {{{ this }}}
-    <tr><td></td><tr>
+    {{#unless @last}}
+        <tr><td></td><tr>
+    {{/unless}}
 {{/each}}
 </tbody>
