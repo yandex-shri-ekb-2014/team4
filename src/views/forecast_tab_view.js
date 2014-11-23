@@ -5,55 +5,37 @@ var tabsTemplate = require('../templates/tabs.hbs');
 var tabs = [
     {
         title: 'кратко',
-        link: 'forecast_short'
+        link: 'short'
     },
     {
         title: 'подробно',
-        link: 'forecast_full'
+        link: 'full'
     },
     {
         title: 'наглядно',
-        link: 'forecast_hours'
+        link: 'hours'
     }
 ];
 
 var ForecastTabView = Backbone.View.extend({
     template: tabsTemplate,
     el: '.tabs',
-    events: {
-        'click .tabs__tab': 'switch'
-    },
-    initialize: function() {
+    initialize: function(options) {
+        this.state = options.state;
+        this.state.on('change', this.render, this);
         this.render();
     },
     render: function(){
         var tabsLength = tabs.length - 1;
 
         if (tabsLength >= 0) {
-            tabs.forEach(function(element, index) {
-                if (index === 0) {
-                    element.class = 'tabs__tab_left';
-                } else if (index === tabsLength) {
-                    element.class = 'tabs__tab_right';
-                } else {
-                    element.class = 'tabs__tab_middle';
+            tabs.forEach(function(element) {
+                if(this.state.get('tab') === element.link) {
+                    element.class += ' button-active';
                 }
-
-                this.$el.append(this.template(element));
             }, this);
         }
-
-    },
-    switch: function(el) {
-        var $allTabs = this.$el.find('.tabs__tab');
-
-        $allTabs.each(function(){
-            if ($(this).hasClass('button-active')) {
-                $(this).removeClass('button-active');
-            }
-        });
-
-        $(el.currentTarget).addClass('button-active');
+        this.$el.append(this.template(tabs));
     }
 });
 

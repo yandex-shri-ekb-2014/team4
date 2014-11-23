@@ -1,1 +1,3 @@
-<a href="#{{link}}" class="button tabs__tab{{#if class}} {{class}}{{/if}}">{{title}}</a>
+{{#each .}}
+    <a href="#{{link}}" class="button tabs__tab tabs__tab_{{#if @first}}left{{else}}{{#if @last}}right{{else}}middle{{/if}}{{/if}}{{#if class}} {{class}}{{/if}}">{{title}}</a>
+{{/each}}
