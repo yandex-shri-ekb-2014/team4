@@ -12,7 +12,7 @@ var ForecastFullView = Backbone.View.extend({
 
         this.collection.forEach(function (model) {
             html += forecastFullDayTemplate({
-                model: model,
+                model: model.toJSON(),
             });
         })
 
