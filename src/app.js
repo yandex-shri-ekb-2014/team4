@@ -16,7 +16,7 @@ var initialize = function () {
     var state = new StateModel();
 
     new Router({state: state});
-    new ForecastTabView();
+    new ForecastTabView({state: state});
 
     fetchHelper(state.get('locality')).then(function (data) {
         new ForecastShortView({
