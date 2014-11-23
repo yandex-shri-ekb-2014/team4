@@ -2,12 +2,21 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 
 var Router = Backbone.Router.extend({
+    state: null,
+
     routes: {
-        '': 'index',
+        ':locality/:tab': 'index',
     },
 
-    index: function () {
-        console.log("Hello world!");
+    initialize: function (options) {
+        this.state = options.state;
+    },
+
+    index: function (locality, tab) {
+        this.state.set({
+            locality: locality,
+            tab: tab,
+        });
     }
 });
 

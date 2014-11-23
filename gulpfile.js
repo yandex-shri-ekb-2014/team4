@@ -48,7 +48,8 @@ gulp.task('browserify', function () {
 
 gulp.task('connect', function () {
     connect.server({
-        livereload: true
+        fallback: 'index.html',
+        livereload: true,
     });
 });
 
