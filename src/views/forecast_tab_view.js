@@ -27,8 +27,10 @@ var ForecastTabView = Backbone.View.extend({
     },
     render: function(){
         if (tabs.length > 0) {
-            tabs.tab = this.state.get('tab');
-            this.$el.append(this.template(tabs));
+            this.$el.html(this.template({
+                tabs: tabs,
+                state: this.state.toJSON()
+            }));
         }
     }
 });
