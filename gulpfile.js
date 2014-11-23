@@ -29,7 +29,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('browserify', function () {
-    var stream = gulp.src(['src/router.js'], {read: true})
+    var stream = gulp.src(['src/app.js'], {read: true})
         .pipe(browserify({
             debug: true,
             transform: ['hbsify'],
@@ -44,7 +44,6 @@ gulp.task('browserify', function () {
     stream
         .pipe(gulp.dest('assets/js'))
         .pipe(connect.reload());
-
 });
 
 gulp.task('connect', function () {

@@ -1,8 +1,6 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-Backbone.$ = $;
-
 var Router = Backbone.Router.extend({
     routes: {
         '': 'index',
@@ -12,8 +10,5 @@ var Router = Backbone.Router.extend({
         console.log("Hello world!");
     }
 });
-
-new Router();
-Backbone.history.start();
 
 module.exports = Router;
