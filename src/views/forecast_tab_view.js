@@ -25,6 +25,14 @@ var ForecastTabView = Backbone.View.extend({
         this.state.on('change', this.render, this);
         this.render();
     },
+    events: {
+        'click a': 'transition'
+    },
+    transition: function(e) {
+        e.preventDefault();
+        var href = $(e.currentTarget).attr('href')
+        Backbone.history.navigate(href, { trigger: true });
+    },
     render: function(){
         if (tabs.length > 0) {
             this.$el.html(this.template({
