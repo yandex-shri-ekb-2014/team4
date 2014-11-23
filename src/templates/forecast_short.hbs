@@ -1,12 +1,12 @@
-<div class="forecast_short__day">
-    <div class="forecast_short__weekday">
+<div class="forecast_short__day {{#if model.isFirstDayOfWeek}} forecast_short__day-weekstart {{/if}}">
+    <div class="forecast_short__weekday {{#if model.is_weekend}} forecast_short__weekday-weekend {{/if}}">
         {{#if model.isTomorrow}}
             завтра
         {{else}}
             {{datef 'D' model.date}}
         {{/if}}
     </div>
-    <div class="forecast_short__date">
+    <div class="forecast_short__date {{#if model.is_weekend}} forecast_short__date-weekend {{/if}}">
         {{#if model.isTomorrow}}
             {{datef 'dd MMMM' model.date}}
         {{else}}
@@ -14,42 +14,9 @@
         {{/if}}
     </div>
     <div class="forecast_short__weather-box">
-        <img class="forecast_short__weather-icon" src="{{weatherIcon }}">
-        <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
-        <div class="forecast_short__weather-temp">+20</div>
+        <img class="forecast_short__weather-icon" src="{{weatherIcon dayInfo.weather_icon}}">
+        <div class="forecast_short__weather-text">{{dayInfo.weather}}</div>
+        <div class="forecast_short__weather-temp">{{dayInfo.temp}}</div>
     </div>
-    <div class="forecast_short__weather-temp-night">+8</div>
+    <div class="forecast_short__weather-temp-night">{{nightInfo.temp}}</div>
 </div>
-
-<!--<div class="forecast_short__day">
-    <div class="forecast_short__weekday forecast_short__weekday-weekend">сб</div>
-    <div class="forecast_short__date forecast_short__date-weekend">23</div>
-    <div class="forecast_short__weather-box">
-        <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg">
-        <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
-        <div class="forecast_short__weather-temp">+20</div>
-    </div>
-    <div class="forecast_short__weather-temp-night">+8</div>
-</div>
-
-<div class="forecast_short__day">
-    <div class="forecast_short__weekday forecast_short__weekday-weekend">вс</div>
-    <div class="forecast_short__date forecast_short__date-weekend">24</div>
-    <div class="forecast_short__weather-box">
-        <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/ovc.svg">
-        <div class="forecast_short__weather-text">облачно с прояснениями</div>
-        <div class="forecast_short__weather-temp">+3</div>
-    </div>
-    <div class="forecast_short__weather-temp-night">+2</div>
-</div>
-
-<div class="forecast_short__day forecast_short__day-weekstart">
-    <div class="forecast_short__weekday">пн</div>
-    <div class="forecast_short__date">25</div>
-    <div class="forecast_short__weather-box">
-        <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg">
-        <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
-        <div class="forecast_short__weather-temp">+20</div>
-    </div>
-    <div class="forecast_short__weather-temp-night">+8</div>
-</div>-->
