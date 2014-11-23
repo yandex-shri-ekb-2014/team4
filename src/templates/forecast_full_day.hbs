@@ -9,7 +9,13 @@
 
         <td>
             <div class="forecast_full__header-inline">{{t type }}</div>
-            <div class="forecast_full__value-temp">{{ temp_min }}…{{ temp_max }}</div>
+            <div class="forecast_full__value-temp">
+                {{#if temp_min}}
+                    {{ temp_min }}…{{ temp_max }}
+                {{else}}
+                    {{ temp }}
+                {{/if}}
+            </div>
         </td>
         <td>
             <img class="forecast_full_weather-icon" src="{{weatherIcon weather_icon }}" />
@@ -34,7 +40,7 @@
             </td>
             <td class="forecast_full__rest" rowspan="4">
                 <div class="forecast_full__header-inline">магнитное поле</div>
-                <div>{{ ../biomet.message }}</div>
+                <div>{{ ../../biomet.message }}</div>
             </td>
         {{/if}}
     </tr>

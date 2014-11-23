@@ -11,7 +11,6 @@ var ForecastFullView = Backbone.View.extend({
         var daysHtml = [];
 
         this.collection.forEach(function (model) {
-            console.log(model.toJSON().date.toString());
             daysHtml.push(forecastFullDayTemplate(model.toJSON()));
         });
 
