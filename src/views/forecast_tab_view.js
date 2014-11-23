@@ -5,7 +5,7 @@ var tabsTemplate = require('../templates/tabs.hbs');
 var tabs = [
     {
         title: 'кратко',
-        link: 'forecast_short'
+        link: 'forecast_short',
     },
     {
         title: 'подробно',
@@ -13,11 +13,9 @@ var tabs = [
     },
     {
         title: 'наглядно',
-        link: 'forecast_hours'
+        link: 'forecast_hours',
     }
 ];
-
-var tabsLength = tabs.length - 1;
 
 var ForecastTabView = Backbone.View.extend({
     template: tabsTemplate,
@@ -29,13 +27,22 @@ var ForecastTabView = Backbone.View.extend({
         this.render();
     },
     render: function(){
-        tabs.forEach(function(element, index) {
-            this.$el.html(this.template(element));
-            //console.log('a[' + index + '] = ' + element.title + element.link);
-        }, this);
+        var tabsLength = tabs.length - 1;
 
+        if (tabsLength >= 0) {
+            tabs.forEach(function(element, index) {
+                if (index === 0) {
+                    element.class = 'tabs__tab_left';
+                } else if (index === tabsLength) {
+                    element.class = 'tabs__tab_right';
+                } else {
+                    element.class = 'tabs__tab_middle';
+                }
 
-        //this.$el.html(this.template(tabs));
+                this.$el.append(this.template(element));
+            }, this);
+        }
+
     },
     /*switch: function(el) {
         var $allTabs = this.$el.find('.tabs__tab');
