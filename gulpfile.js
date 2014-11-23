@@ -1,88 +1,65 @@
-// Include gulp
 var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
+var browserify = require('gulp-browserify');
+var connect = require('gulp-connect');
+var minifycss = require('gulp-minify-css');
+var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var isProduction = -1 !== process.argv.indexOf('--prod');
 
-// Include Our Plugins
-var jshint = require('gulp-jshint'),
-sass = require('gulp-sass'),
-concat = require('gulp-concat'),
-uglify = require('gulp-uglify'),
-rename = require('gulp-rename'),
-autoprefixer = require('gulp-autoprefixer'),
-bf = require('gulp-browserify'),
-ignore = require('gulp-ignore'),
-rimraf = require('gulp-rimraf'),
-livereload = require('gulp-livereload');
-plumber = require('gulp-plumber');
-
-//Lint Task
-gulp.task('lint', function() {
-   return gulp.src('app/*.js')
-        .pipe(plumber())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
-
-// Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('src/base.scss')
-        .pipe(plumber())
+    var stream = gulp.src('src/styles/base.scss')
         .pipe(sass())
-        .pipe(rename('main.css'))
+        .on('error', console.log)
+        .pipe(rename('style.css'))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('build/css'));
+        .on('error', console.log);
+
+    if (isProduction) {
+        stream.pipe(minifycss());
+    }
+
+    stream
+        .pipe(gulp.dest('assets/css'))
+        .pipe(connect.reload());
+});
+
+gulp.task('browserify', function () {
+    var stream = gulp.src(['src/router.js'], {read: true})
+        .pipe(browserify({
+            debug: true,
+            transform: ['hbsify'],
+        }))
+        .on('error', console.log)
+        .pipe(rename('app.js'));
+
+    if (isProduction) {
+        stream.pipe(uglify());
+    }
+
+    stream
+        .pipe(gulp.dest('assets/js'))
+        .pipe(connect.reload());
 
 });
 
-// Browserify
-gulp.task('bf', function () {
-    return gulp.src(['app/router.js'], {read: true})
-        // .pipe(browserify({
-        //     debug: true,
-        //     transform: ['jstify'] // hbsify, нужно будет погуглить пакет, который за это отвечает, он так и называется вроде
-        // }))
-        .pipe(plumber())
-        .pipe(rename('compile.js'))
-        .pipe(gulp.dest('build/js'));
-
+gulp.task('connect', function () {
+    connect.server({
+        livereload: true
+    });
 });
 
-// Concatenate & Minify JS
-gulp.task('scripts', function() {
-    return gulp.src('build/js/compile.js')
-        .pipe(plumber())
-        .pipe(rename('compile.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('build/js'));
+gulp.task('watch', function () {
+    gulp.watch(['src/**/*.{js,hbs}'], ['browserify']);
+    gulp.watch(['src/**/*.scss'], ['sass']);
+    gulp.watch(['index.html'], function () {
+        gulp.src('index.html').pipe(connect.reload());
+    });
 });
 
-// Move index
-gulp.task('move_html', function(){
-    return gulp.src('src/index.html')
-    .pipe(plumber())
-    .pipe(gulp.dest('build/'));
-});
-
-// Move images
-gulp.task('move_images', function(){
-    return gulp.src('src/**/*.png')
-    .pipe(plumber())
-    .pipe(gulp.dest('build/images'));
-});
-
-// Watch Files For Changes
-gulp.task('watch', function() {
-    livereload.listen();
-    gulp.watch('app/*.js', ['lint', 'scripts']);
-    gulp.watch('app/*.scss', ['sass']);
-
-    gulp.watch('src/*.scss', ['sass']);
-    gulp.watch('src/**/*.png', ['move_images']);
-    gulp.watch('src/*.html', ['move_html']);
-    gulp.watch('src/**').on('change', livereload.changed);
-});
-
-// Default Task
-gulp.task('default', ['lint', 'sass', 'bf', 'scripts', 'move_html', 'watch']);
+gulp.task('build', ['sass', 'browserify']);
+gulp.task('default', ['build', 'connect', 'watch']);
