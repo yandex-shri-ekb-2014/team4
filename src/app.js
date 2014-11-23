@@ -15,7 +15,7 @@ var initialize = function () {
 
     fetchHelper(state.get('locality')).then(function (data) {
         new ForecastShortView({
-            el: $('.forecast__short'),
+            el: $('.forecast_short'),
             collection: data.forecast
         });
     });
