@@ -1,5 +1,6 @@
-var Backbone = require('backbone'),
-    forecastFullDayTemplate = require('../templates/forecast_full_day.hbs');
+var Backbone = require('backbone');
+var forecastFullTemplate = require('../templates/forecast_full.hbs');
+var forecastFullDayTemplate = require('../templates/forecast_full_day.hbs');
 
 var ForecastFullView = Backbone.View.extend({
     initialize: function () {
@@ -7,16 +8,16 @@ var ForecastFullView = Backbone.View.extend({
     },
 
     render: function() {
-
-        var html = '';
+        var daysHtml = [];
 
         this.collection.forEach(function (model) {
-            html += forecastFullDayTemplate({
-                model: model.toJSON(),
-            });
-        })
+            console.log(model.toJSON().date.toString());
+            daysHtml.push(forecastFullDayTemplate(model.toJSON()));
+        });
 
-        this.$el.html(html);
+        this.$el.html(forecastFullTemplate({
+            days: daysHtml
+        }));
     }
 });
 
