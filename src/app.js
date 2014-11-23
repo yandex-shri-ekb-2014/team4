@@ -8,6 +8,8 @@ var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
 var NowView = require('./views/now');
 
+require('./utils/template_helper');
+
 Backbone.$ = $;
 
 var initialize = function () {
