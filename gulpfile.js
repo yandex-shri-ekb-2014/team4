@@ -12,17 +12,20 @@ bf = require('gulp-browserify'),
 ignore = require('gulp-ignore'),
 rimraf = require('gulp-rimraf'),
 livereload = require('gulp-livereload');
+plumber = require('gulp-plumber');
 
 //Lint Task
 gulp.task('lint', function() {
    return gulp.src('app/*.js')
-       .pipe(jshint())
-       .pipe(jshint.reporter('default'));
+        .pipe(plumber())
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 // Compile Our Sass
 gulp.task('sass', function() {
     return gulp.src('src/base.scss')
+        .pipe(plumber())
         .pipe(sass())
         .pipe(rename('main.css'))
         .pipe(autoprefixer({
@@ -40,6 +43,7 @@ gulp.task('bf', function () {
         //     debug: true,
         //     transform: ['jstify'] // hbsify, нужно будет погуглить пакет, который за это отвечает, он так и называется вроде
         // }))
+        .pipe(plumber())
         .pipe(rename('compile.js'))
         .pipe(gulp.dest('build/js'));
 
@@ -48,6 +52,7 @@ gulp.task('bf', function () {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('build/js/compile.js')
+        .pipe(plumber())
         .pipe(rename('compile.js'))
         .pipe(uglify())
         .pipe(gulp.dest('build/js'));
@@ -56,12 +61,14 @@ gulp.task('scripts', function() {
 // Move index
 gulp.task('move_html', function(){
     return gulp.src('src/index.html')
+    .pipe(plumber())
     .pipe(gulp.dest('build/'));
 });
 
 // Move images
 gulp.task('move_images', function(){
     return gulp.src('src/**/*.png')
+    .pipe(plumber())
     .pipe(gulp.dest('build/images'));
 });
 
