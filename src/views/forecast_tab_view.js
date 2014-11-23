@@ -26,16 +26,10 @@ var ForecastTabView = Backbone.View.extend({
         this.render();
     },
     render: function(){
-        var tabsLength = tabs.length - 1;
-
-        if (tabsLength >= 0) {
-            tabs.forEach(function(element) {
-                if(this.state.get('tab') === element.link) {
-                    element.class += ' button-active';
-                }
-            }, this);
+        if (tabs.length > 0) {
+            tabs.tab = this.state.get('tab');
+            this.$el.append(this.template(tabs));
         }
-        this.$el.append(this.template(tabs));
     }
 });
 
