@@ -1,5 +1,8 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
+var now_view = require('./views/now_view.js')
+
+Backbone.$ = $;
 
 var Router = Backbone.Router.extend({
     state: null,
@@ -19,5 +22,8 @@ var Router = Backbone.Router.extend({
         });
     }
 });
+
+new Router();
+Backbone.history.start();
 
 module.exports = Router;

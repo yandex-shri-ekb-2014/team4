@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ШРИ [team4]</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!--layout-->
+    <div class="layout">
+        <!--header-->
+        <div class="layout">
+
+            <div class="header">
+                <a href="#">
+                    <img src="images/header__logo.png" alt="" class="header__logo">
+                </a>
+                <div class="header__search">
+                    <div class="header_search__label">
+                        <a href="#" class="header_search__label-link">Погода</a>
+                    </div>
+                    <input class="header_search__input" type="text">
+                    <button class="button button-search">Найти</button>
+                </div>
+            </div>
+        </div>
+        <!--end header-->
+
+        <!--city_select + now block-->
+        <div class="city_and_now_wrapper">
+            <div class="city_and_now_container">
+                <!--city_select-->
+                <div class="city-select">
+                    <div class="city-select__city-name">Екатеринбург</div>
+                    <div class="city-select__city-dropdown-group">
+                        <div class="city-select__city-other button">Другой город</div>
+                        <div class="city-select__city-dropdown">
+                            <span>Последние города</span>
+                            <ul class="city-select__recent-list">
+                                <li class="city-select__recent-list-element city-select__recent-list-element_active">Екатеринбург</li>
+                                <li class="city-select__recent-list-element">Москва</li>
+                                <li class="city-select__recent-list-element">Минск</li>
+                            </ul>
+                            <div class="city-select__city-all">Все города</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <script>
+                    (function() {
+                        var citySelector = document.getElementsByClassName('city-select')[0],
+                            cityOther = citySelector.getElementsByClassName('city-select__city-other')[0],
+                            cityDropdown = citySelector.getElementsByClassName('city-select__city-dropdown')[0];
+                        cityOther.addEventListener('click', function() {
+                            cityDropdown.style.display = 'block';
+                        });
+                        cityDropdown.addEventListener('click', function() {
+                            this.style.display = 'none';
+                        });
+                    })();
+                </script>
+                <!--end city_select-->
+
+                <!--now-->
+                <div class="current-weather">
+
+                </div>
+
+                <!--end now-->
+            </div>
+            <div class="current-weather_adv-wrapper">
+                <img class="current-weather_adv_image" src="images/adv_right.png" alt="">
+            </div>
+
+        </div>
+        <!--end city_select + now block-->
+
+        <!--forecast-->
+            <!-- tabs -->
+                <div class="tabs">
+                    <a href="#forecast_short" class="button tabs__tab tabs__tab_left">кратко</a>
+                    <a href="#forecast_full" class="button tabs__tab tabs__tab_middle button-active">подробно</a>
+                    <a href="#forecast_hours" class="button tabs__tab tabs__tab_right">наглядно</a>
+                </div>
+            <!-- end tabs -->
+
+            <!-- full view -->
+                <table class="forecast_full">
+                    <thead class="forecast_full__header">
+                        <tr class="forecast_full__header-row">
+                            <td colspan="5"></td>
+                            <td>давление, мм рт. ст.</td>
+                            <td>влажность</td>
+                            <td>ветер, м/c</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="forecast_full__daytime">
+                            <td class="forecast_full__weekday" rowspan="4">вс</td>
+                            <td class="forecast_full__date" rowspan="4"><div class="forecast_full__date-day">28</div>
+                                <div class="forecast_full__date-month">октября</div>
+                            </td>
+                            <td>
+                                <div class="forecast_full__header-inline">утром</div>
+                                <div class="forecast_full__value-temp">-33…-44</div>
+                            </td>
+                            <td>
+                                <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
+                            </td>
+                            <td>облачно, небольшой дождь</td>
+                            <td>740</td>
+                            <td>70%</td>
+                            <td>4.9</td>
+                            <td class="forecast_full__rest" rowspan="4"></td>
+                            <td class="forecast_full__rest" rowspan="4">
+                                <div class="forecast_full__header-inline">восход</div>
+                                <div>07:57</div>
+                            </td>
+                            <td class="forecast_full__rest" rowspan="4">
+                                <div class="forecast_full__header-inline">заход</div>
+                                <div>17:57</div>
+                            </td>
+                            <td class="forecast_full__rest" rowspan="4">
+                                <img class="forecast_full__moon-icon" src="http://ekb.shri14.ru/icons/icon_moon_13.svg" />
+                            </td>
+                            <td class="forecast_full__rest" rowspan="4">
+                                <div class="forecast_full__header-inline">магнитное поле</div>
+                                <div>слабо возмущенное</div>
+                            </td>
+                        </tr>
+                        <tr class="forecast_full__daytime">
+                            <td>
+                                <div class="forecast_full__header-inline">днем</div>
+                                <div class="forecast_full__value-temp">-3…0</div>
+                            </td>
+                            <td>
+                                <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
+                            </td>
+                            <td>облачно</td>
+                            <td>740</td>
+                            <td>70%</td>
+                            <td>4.9</td>
+                        </tr>
+                        <tr class="forecast_full__daytime">
+                            <td>
+                                <div class="forecast_full__header-inline">вечером</div>
+                                <div class="forecast_full__value-temp">-5…-4</div>
+                            </td>
+                            <td>
+                                <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
+                            </td>
+                            <td>облачно, небольшой дождь</td>
+                            <td>740</td>
+                            <td>70%</td>
+                            <td>4.9</td>
+                        </tr>
+                        <tr class="forecast_full__daytime">
+                            <td>
+                                <div class="forecast_full__header-inline">ночью</div>
+                                <div class="forecast_full__value-temp">-5…-4</div>
+                            </td>
+                            <td>
+                                <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
+                            </td>
+                            <td>облачно, небольшой дождь</td>
+                            <td>740</td>
+                            <td>70%</td>
+                            <td>4.9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- end full view -->
+
+            <!-- short view -->
+                <div class="forecast__short">
+                    <div class="forecast_short__day">
+                        <div class="forecast_short__weekday">завтра</div>
+                        <div class="forecast_short__date">22 августа</div>
+                        <div class="forecast_short__weather-box">
+                            <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg">
+                            <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
+                            <div class="forecast_short__weather-temp">+20</div>
+                        </div>
+                        <div class="forecast_short__weather-temp-night">+8</div>
+                    </div>
+
+                    <div class="forecast_short__day">
+                        <div class="forecast_short__weekday forecast_short__weekday-weekend">сб</div>
+                        <div class="forecast_short__date forecast_short__date-weekend">23</div>
+                        <div class="forecast_short__weather-box">
+                            <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg">
+                            <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
+                            <div class="forecast_short__weather-temp">+20</div>
+                        </div>
+                        <div class="forecast_short__weather-temp-night">+8</div>
+                    </div>
+
+                    <div class="forecast_short__day">
+                        <div class="forecast_short__weekday forecast_short__weekday-weekend">вс</div>
+                        <div class="forecast_short__date forecast_short__date-weekend">24</div>
+                        <div class="forecast_short__weather-box">
+                            <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/ovc.svg">
+                            <div class="forecast_short__weather-text">облачно с прояснениями</div>
+                            <div class="forecast_short__weather-temp">+3</div>
+                        </div>
+                        <div class="forecast_short__weather-temp-night">+2</div>
+                    </div>
+
+                    <div class="forecast_short__day forecast_short__day-weekstart">
+                        <div class="forecast_short__weekday">пн</div>
+                        <div class="forecast_short__date">25</div>
+                        <div class="forecast_short__weather-box">
+                            <img class="forecast_short__weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg">
+                            <div class="forecast_short__weather-text">облачно с прояснениями, небольшой дождь</div>
+                            <div class="forecast_short__weather-temp">+20</div>
+                        </div>
+                        <div class="forecast_short__weather-temp-night">+8</div>
+                    </div>
+                </div>
+            <!-- end short view -->
+
+            <!-- hours view -->
+                <div class="forecast_hours">
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
+                        <div class="forecast_hours__value">-1</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
+                        <div class="forecast_hours__value">-2</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
+                        <div class="forecast_hours__value">0</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
+                        <div class="forecast_hours__value">+1</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-4">
+                        <div class="forecast_hours__value">+3</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-6">
+                        <div class="forecast_hours__value">+5</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
+                        <div class="forecast_hours__value">0</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
+                        <div class="forecast_hours__value">-3</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
+                        <div class="forecast_hours__value">-5</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
+                        <div class="forecast_hours__value">-6</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
+                        <div class="forecast_hours__value">-6</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
+                        <div class="forecast_hours__value">-6</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
+                        <div class="forecast_hours__value">-3</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-0">
+                        <div class="forecast_hours__value">0</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
+                        <div class="forecast_hours__value">+1</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-6">
+                        <div class="forecast_hours__value">+5</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-8">
+                        <div class="forecast_hours__value">+8</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
+                        <div class="forecast_hours__value">+2</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
+                        <div class="forecast_hours__value">+2</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
+                        <div class="forecast_hours__value">0</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
+                        <div class="forecast_hours__value">-1</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
+                        <div class="forecast_hours__value">-1</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
+                        <div class="forecast_hours__value">-3</div>
+                    </div>
+                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-10">
+                        <div class="forecast_hours__value">-9</div>
+                    </div>
+                </div>
+            <!-- end hours view -->
+        <!--end forecast-->
+
+        <!--direct-->
+        <div class="direct">
+            <div class="direct__link">
+                <a href="https://direct.yandex.ru/" class="direct__link-a">Яндекс.Директ</a>
+            </div>
+            <div class="direct__row">
+                <div class="direct__block">
+                    <img class="direct__block-img" src="images/direct__block1.png">
+                    <div class="direct__block__info">
+                        <h4 class="direct__block-title">Студия элитной итальянской мебели</h4>
+                        <p class="direct__block-text">
+                            Мебель по ценам ниже среднерыночных! Узнайте на сайте! Безграничный выбор!
+                        </p>
+                        <a class="direct__block-link" href="#">Адрес и телефон artplay-mebel.ru</a>
+                    </div>
+                </div>
+                <div class="direct__block direct__block-middle">
+                    <div class="direct__block-img">
+                        <img src="images/direct__block2.png">
+                    </div>
+                    <div class="direct__block__info">
+                        <h4 class="direct__block-title">SEO. Поисковая оптимизация сайиа!</h4>
+                        <p class="direct__block-text">
+                            По оценке экспертов мы №1 среди 183 SEO-компаний в рейтинге SeoNews!
+                        </p>
+                        <a class="direct__block-link" href="#">ashmanov.com</a>
+                    </div>
+                </div>
+                <div class="direct__block">
+                    <div class="direct__block-img">
+                        <img src="images/direct__block3.png">
+                    </div>
+                    <div class="direct__block__info">
+                        <h4 class="direct__block-title">Отели Греции онлайн - Херсонес</h4>
+                        <p class="direct__block-text">
+                            Херсонес - 176 отелей на Booking.com. Бесплатная отмена брони. Выбирайте!
+                        </p>
+                        <a class="direct__block-link" href="#">booking.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end direct-->
+
+        <!--footer_menu-->
+        <div class="footer_menu">
+            <div class="footer_menu__block">
+                <h3 class="footer_menu__block-title">Погода на карте</h3>
+                <a href="#" class="footer_menu__block-link">Центр России</a>
+                <a href="#" class="footer_menu__block-link">Россия</a>
+                <a href="#" class="footer_menu__block-link">Европа</a>
+            </div>
+            <div class="footer_menu__block">
+                <h3 class="footer_menu__block-title">Другие прогнозы</h3>
+                <a href="#" class="footer_menu__block-link">Гисметео</a>
+                <a href="#" class="footer_menu__block-link">Гидрометцентр России</a>
+                <a href="#" class="footer_menu__block-link">Weather.com</a>
+            </div>
+            <div class="footer_menu__block">
+                <h3 class="footer_menu__block-title">Погода с собой</h3>
+                <a href="#" class="footer_menu__block-link">Информер</a>
+                <a href="#" class="footer_menu__block-link">Настольный виджет</a>
+                <a href="#" class="footer_menu__block-link">Погода в вашем браузере</a>
+            </div>
+            <div class="footer_menu__block">
+                <h3 class="footer_menu__block-title">Другой вид</h3>
+                <a href="#" class="footer_menu__block-link">Виджет для Яндекса</a>
+                <a href="#" class="footer_menu__block-link">В миниатюре</a>
+            </div>
+        </div>
+        <!--end footer_menu-->
+
+    </div>
+    <!--end layout-->
+    <!--footer-->
+    <div class="footer">
+        <div class="footer__row">
+            <div class="footer__block footer__block_left">
+                <a href="#" class="footer-link footer-link-first">Пользовательское соглашение</a>
+                <a href="#" class="footer-link">Мобильная версия</a>
+            </div>
+            <div class="footer__block footer__block_wide">
+                <span class="footer__block_wide_statistic">Прогноз погоды: Екатеринбург и еще 12268 городов в 229 странах</span>
+                <span>Данные предоставлены <a href="#" class="footer-link footer-link-text">FORECA</a></span>
+            </div>
+            <div class="footer__block footer__block_links">
+                <a href="#" class="footer-link footer-link-first">Статистика</a>
+                <a href="#" class="footer-link">Обратная связь</a>
+                <a href="#" class="footer-link">Реклама</a>
+            </div>
+            <div class="footer__block footer__block_right">
+                <span>&copy; 2000&mdash;2014 &laquo;<a href="#" class="footer-link footer-link-text">Яндекс</a>&raquo;</span>
+            </div>
+        </div>
+    </div>
+    <!--end footer-->
+</body>
+</html>
