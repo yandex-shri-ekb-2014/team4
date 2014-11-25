@@ -48,6 +48,7 @@ gulp.task('browserify', function () {
 
 gulp.task('connect', function () {
     connect.server({
+        port: process.env.PORT || 8080,
         fallback: 'index.html',
         livereload: true,
     });
