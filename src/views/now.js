@@ -1,6 +1,5 @@
-var $ = require('jquery'),
-Backbone = require('backbone'),
-nowTemplate = require('../templates/now.hbs');
+var Backbone = require('backbone');
+var nowTemplate = require('../templates/now.hbs');
 
 NowView = Backbone.View.extend({
     initialize: function(options) {

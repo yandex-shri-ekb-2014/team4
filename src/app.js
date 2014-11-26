@@ -1,5 +1,4 @@
 var Backbone = require('backbone');
-var $ = require('jquery');
 var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
@@ -11,9 +10,9 @@ var NowView = require('./views/now');
 
 require('./utils/template_helper');
 
-Backbone.$ = $;
-
 var initialize = function () {
+    Backbone.$ = $;
+
     var state = new StateModel();
 
     new Router({state: state});
