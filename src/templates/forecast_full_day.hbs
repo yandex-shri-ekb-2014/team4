@@ -1,5 +1,5 @@
 {{#each parts}}
-    <tr class="forecast_full__daytime">
+    <tr class="forecast_full__daytime" style="background-color: #{{temp2color temp}}">
         {{#if @first}}
             <td class="forecast_full__weekday" rowspan="4">{{datef 'D' ../../date }}</td>
             <td class="forecast_full__date" rowspan="4"><div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>

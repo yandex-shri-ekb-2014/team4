@@ -13,10 +13,12 @@
             {{datef 'dd' model.date}}
         {{/if}}
     </div>
-    <div class="forecast_short__weather-box">
+    <div class="forecast_short__weather-box" style="background-color: #{{temp2color dayInfo.temp}}">
         <img class="forecast_short__weather-icon" src="{{weatherIcon dayInfo.weather_icon}}">
         <div class="forecast_short__weather-text">{{dayInfo.weather}}</div>
         <div class="forecast_short__weather-temp">{{dayInfo.temp}}</div>
     </div>
-    <div class="forecast_short__weather-temp-night">{{nightInfo.temp}}</div>
+    <div class="forecast_short__weather-temp-night" style="background-color: #{{temp2color nightInfo.temp}}">
+        {{~nightInfo.temp~}}
+    </div>
 </div>

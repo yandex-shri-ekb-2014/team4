@@ -1,5 +1,7 @@
 var Handlebars = require('hbsfy/runtime');
 var datef = require('datef');
+var temp2color = require('../utils/temp2color');
+
 require('datef/lang/ru');
 datef.lang('ru');
 
@@ -22,6 +24,8 @@ Handlebars.registerHelper('ifCond', function(v1, v2, options) {
 Handlebars.registerHelper('datef', function (format, date) {
     return datef(format, date);
 });
+
+Handlebars.registerHelper('temp2color', temp2color);
 
 var translates = {
     morning: 'утром',
