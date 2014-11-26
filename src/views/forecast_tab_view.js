@@ -1,5 +1,4 @@
-var $            = require('jquery'),
-    Backbone     = require('backbone');
+var Backbone = require('backbone');
 var tabsTemplate = require('../templates/tabs.hbs');
 
 var tabs = [
