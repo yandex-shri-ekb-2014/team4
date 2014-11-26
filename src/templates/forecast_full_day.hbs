@@ -2,7 +2,7 @@
     <tr class="forecast_full__daytime">
         {{#if @first}}
             <td class="forecast_full__weekday{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
-                {{datef 'D' ../../date }}
+                {{~ datef 'D' ../../date ~}}
             </td>
             <td class="forecast_full__date{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
                 <div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
@@ -13,11 +13,11 @@
         <td>
             <div class="forecast_full__header-inline">{{t type }}</div>
             <div class="forecast_full__value-temp">
-                {{#if temp_min}}
-                    {{ temp_min }}…{{ temp_max }}
+                {{~#if temp_min}}
+                    {{~ temp_min }}…{{ temp_max ~}}
                 {{else}}
-                    {{ temp }}
-                {{/if}}
+                    {{~ temp ~}}
+                {{/if~}}
             </div>
         </td>
         <td>
