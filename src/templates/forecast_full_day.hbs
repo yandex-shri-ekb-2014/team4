@@ -1,8 +1,11 @@
 {{#each parts}}
     <tr class="forecast_full__daytime">
         {{#if @first}}
-            <td class="forecast_full__weekday" rowspan="4">{{datef 'D' ../../date }}</td>
-            <td class="forecast_full__date" rowspan="4"><div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
+            <td class="forecast_full__weekday{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                {{datef 'D' ../../date }}
+            </td>
+            <td class="forecast_full__date{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                <div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
                 <div class="forecast_full__date-month">{{datef 'MMMM' ../../date }}</div>
             </td>
         {{/if}}

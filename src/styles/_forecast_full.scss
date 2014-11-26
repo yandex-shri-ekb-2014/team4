@@ -35,6 +35,10 @@
             margin-top: -10px;
             font-size: 13px;
         }
+
+        &-weekend {
+            color: red;
+        }
     }
 
     &__weekday {
@@ -42,6 +46,10 @@
         font-size: 13px;
         vertical-align: top;
         background: #fff;
+
+        &-weekend {
+            color: red;
+        }
     }
 
     &__daytime {
