@@ -1,0 +1,17 @@
+<div class="city-select__city-name">{{ locality.name }}</div>
+<div class="city-select__city-dropdown-group">
+    <div class="city-select__city-other button">Другой город</div>
+    <div class="city-select__city-dropdown">
+        <span>Последние города</span>
+        <ul class="city-select__recent-list">
+            {{#each recent}}
+                <li class="city-select__recent-list-element">
+                    <a href="#" class="city-select__recent-list-link{{#ifCond geoid ../locality.geoid}} city-select__recent-list-link_active{{/ifCond}}">
+                        {{~ name ~}}
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+        <div class="city-select__city-all">Все города</div>
+    </div>
+</div>

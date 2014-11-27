@@ -4,17 +4,18 @@ var Router = Backbone.Router.extend({
     state: null,
 
     routes: {
-        ':locality/:tab': 'index',
+        ':geoid/:tab': 'index',
     },
 
     initialize: function (options) {
         this.state = options.state;
     },
 
-    index: function (locality, tab) {
+    index: function (geoid, tab) {
+        console.log(geoid);
         this.state.set({
-            locality: locality,
-            tab: tab,
+            geoid: geoid,
+            tab: tab
         });
     }
 });
