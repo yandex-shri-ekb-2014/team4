@@ -1,4 +1,3 @@
-var $ = require('jquery');
 var FactModel = require('../models/fact');
 var ForecastCollection = require('../collections/forecast');
 

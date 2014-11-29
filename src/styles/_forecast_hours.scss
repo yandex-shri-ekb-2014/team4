@@ -1,16 +1,15 @@
-.forecast_hours_svg
+.forecast_hours
 {
+    margin: 30px 0 0;
 }
-.bar rect {
-    fill: steelblue;
+
+.forecast_hours__svg_bar rect
+{
     shape-rendering: crispEdges;
 }
 
-.bar text {
-    fill: #fff;
-}
-
-.axis path, .axis line {
+.forecast_hours__svg_axis path,
+.forecast_hours__svg_axis line {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;

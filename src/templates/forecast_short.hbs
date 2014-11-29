@@ -1,22 +1,24 @@
-<div class="forecast_short__day {{#if model.isFirstDayOfWeek}} forecast_short__day-weekstart {{/if}}">
-    <div class="forecast_short__weekday {{#if model.is_weekend}} forecast_short__weekday-weekend {{/if}}">
-        {{#if model.isTomorrow}}
+<div class="forecast_short__day {{#if date.is_weekstart}} forecast_short__day-weekstart {{/if}}">
+    <div class="forecast_short__weekday {{#if date.is_weekend}} forecast_short__weekday-weekend {{/if}}">
+        {{~#if date.is_tomorrow~}}
             завтра
-        {{else}}
-            {{datef 'D' model.date}}
-        {{/if}}
+        {{~else~}}
+            {{datef 'D' date.date}}
+        {{~/if~}}
     </div>
-    <div class="forecast_short__date {{#if model.is_weekend}} forecast_short__date-weekend {{/if}}">
-        {{#if model.isTomorrow}}
-            {{datef 'dd MMMM' model.date}}
-        {{else}}
-            {{datef 'dd' model.date}}
-        {{/if}}
+    <div class="forecast_short__date {{#if date.is_weekend}} forecast_short__date-weekend {{/if}}">
+        {{~#if date.is_tomorrow~}}
+            {{datef 'dd MMMM' date.date}}
+        {{~else~}}
+            {{datef 'dd' date.date}}
+        {{~/if~}}
     </div>
-    <div class="forecast_short__weather-box">
-        <img class="forecast_short__weather-icon" src="{{weatherIcon dayInfo.weather_icon}}">
-        <div class="forecast_short__weather-text">{{dayInfo.weather}}</div>
-        <div class="forecast_short__weather-temp">{{dayInfo.temp}}</div>
+    <div class="forecast_short__weather-box" style="background-color: #{{temp2color day.temp}}">
+        <img class="forecast_short__weather-icon" src="{{weatherIcon day.weather_icon}}">
+        <div class="forecast_short__weather-text">{{day.weather}}</div>
+        <div class="forecast_short__weather-temp">{{day.temp}}</div>
     </div>
-    <div class="forecast_short__weather-temp-night">{{nightInfo.temp}}</div>
+    <div class="forecast_short__weather-temp-night" style="background-color: #{{temp2color night.temp}}">
+        {{~night.temp~}}
+    </div>
 </div>

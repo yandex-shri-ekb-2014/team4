@@ -1,8 +1,11 @@
 {{#each parts}}
-    <tr class="forecast_full__daytime">
+    <tr class="forecast_full__daytime" style="background-color: #{{temp2color temp}}">
         {{#if @first}}
-            <td class="forecast_full__weekday" rowspan="4">{{datef 'D' ../../date }}</td>
-            <td class="forecast_full__date" rowspan="4"><div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
+            <td class="forecast_full__weekday{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                {{~ datef 'D' ../../date ~}}
+            </td>
+            <td class="forecast_full__date{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                <div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
                 <div class="forecast_full__date-month">{{datef 'MMMM' ../../date }}</div>
             </td>
         {{/if}}
@@ -10,11 +13,11 @@
         <td>
             <div class="forecast_full__header-inline">{{t type }}</div>
             <div class="forecast_full__value-temp">
-                {{#if temp_min}}
-                    {{ temp_min }}…{{ temp_max }}
+                {{~#if temp_min}}
+                    {{~ temp_min }}…{{ temp_max ~}}
                 {{else}}
-                    {{ temp }}
-                {{/if}}
+                    {{~ temp ~}}
+                {{/if~}}
             </div>
         </td>
         <td>
@@ -37,10 +40,6 @@
             </td>
             <td class="forecast_full__rest" rowspan="4">
                 <img class="forecast_full__moon-icon" src="{{moonIcon ../../moon_code }}" />
-            </td>
-            <td class="forecast_full__rest" rowspan="4">
-                <div class="forecast_full__header-inline">магнитное поле</div>
-                <div>{{ ../../biomet.message }}</div>
             </td>
         {{/if}}
     </tr>
