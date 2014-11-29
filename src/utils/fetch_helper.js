@@ -8,6 +8,7 @@ var fetch = function (locality) {
         .error(deferred.reject)
         .success(function (data) {
             deferred.resolve({
+                locality: data.info,
                 today: new FactModel(data.fact),
                 yesterday: new FactModel(data.yesterday),
                 forecast: new ForecastCollection(data.forecast),

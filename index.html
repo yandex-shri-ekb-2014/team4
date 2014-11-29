@@ -30,36 +30,7 @@
         <div class="city_and_now_wrapper">
             <div class="city_and_now_container">
                 <!--city_select-->
-                <div class="city-select">
-                    <div class="city-select__city-name">Екатеринбург</div>
-                    <div class="city-select__city-dropdown-group">
-                        <div class="city-select__city-other button">Другой город</div>
-                        <div class="city-select__city-dropdown">
-                            <span>Последние города</span>
-                            <ul class="city-select__recent-list">
-                                <li class="city-select__recent-list-element city-select__recent-list-element_active">Екатеринбург</li>
-                                <li class="city-select__recent-list-element">Москва</li>
-                                <li class="city-select__recent-list-element">Минск</li>
-                            </ul>
-                            <div class="city-select__city-all">Все города</div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <script>
-                    (function() {
-                        var citySelector = document.getElementsByClassName('city-select')[0],
-                            cityOther = citySelector.getElementsByClassName('city-select__city-other')[0],
-                            cityDropdown = citySelector.getElementsByClassName('city-select__city-dropdown')[0];
-                        cityOther.addEventListener('click', function() {
-                            cityDropdown.style.display = 'block';
-                        });
-                        cityDropdown.addEventListener('click', function() {
-                            this.style.display = 'none';
-                        });
-                    })();
-                </script>
+                <div class="city-select"></div>
                 <!--end city_select-->
 
                 <!--now-->

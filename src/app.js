@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
-var geolocator = require('./utils/geolocator');
+var CitySelectView = require('./views/city_select');
 var ForecastTabView = require('./views/forecast_tab_view');
 var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
@@ -19,11 +19,16 @@ var initialize = function () {
     new Router({state: state});
     new ForecastTabView({state: state});
 
-    geolocator()
-        .then(function (data) {
-            return fetchHelper(data.geoid);
-        })
-        .then(function (data) {
+    state.on('change:geoid', function () {
+        fetchHelper(state.get('geoid')).then(function (data) {
+
+            state.set('locality', data.locality);
+
+            new CitySelectView({
+                el: $('.city-select'),
+                model: state
+            });
+
             new ForecastShortView({
                 el: $('.forecast_short'),
                 collection: data.forecast,
@@ -50,6 +55,7 @@ var initialize = function () {
                 state: state,
             });
         });
+    });
 
     Backbone.history.start({pushState: true});
 }
