@@ -1,9 +1,11 @@
 var Backbone = require('backbone');
+var geolocator = require('./utils/geolocator');
 
 var Router = Backbone.Router.extend({
     state: null,
 
     routes: {
+        '': 'autoDetect',
         ':geoid/:tab': 'index',
     },
 
@@ -11,8 +13,16 @@ var Router = Backbone.Router.extend({
         this.state = options.state;
     },
 
+    autoDetect: function () {
+        var self = this;
+
+        geolocator()
+            .then(function (data) {
+                self.state.set({geoid: data.geoid});
+            });
+    },
+
     index: function (geoid, tab) {
-        console.log(geoid);
         this.state.set({
             geoid: geoid,
             tab: tab
