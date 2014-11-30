@@ -18,6 +18,9 @@ $spritePath: '../images/city-select-sprite.png';
             display: inline-block;
             font-size: $nameFontSize;
             min-width: 154px;
+            padding: 0;
+            margin: 0 12px 0 0;
+            vertical-align: middle;
         }
 
         &-dropdown-group
@@ -29,18 +32,19 @@ $spritePath: '../images/city-select-sprite.png';
         {
             font-size: $otherFontSize;
             cursor: pointer;
-        }
+            vertical-align: middle;
 
-        &-other::after
-        {
-            display: inline-block;
-            content: ' ';
-            width: 20px;
-            height: 10px;
-            margin-left: 5px;
-            background-image: url($spritePath);
-            background-position: -15px -1px;
-            background-repeat: no-repeat;
+            &::after
+            {
+                display: inline-block;
+                content: ' ';
+                width: 20px;
+                height: 10px;
+                margin-left: 5px;
+                background-image: url($spritePath);
+                background-position: -15px -1px;
+                background-repeat: no-repeat;
+            }
         }
 
         &-dropdown
