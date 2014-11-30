@@ -1,0 +1,46 @@
+{{#each parts}}
+    <tr class="forecast_full__daytime" style="background-color: #{{temp2color temp}}">
+        {{#if @first}}
+            <td class="forecast_full__weekday{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                {{~ datef 'D' ../../date ~}}
+            </td>
+            <td class="forecast_full__date{{#if ../../is_weekend}} forecast_full__date-weekend{{/if}}" rowspan="4">
+                <div class="forecast_full__date-day">{{datef 'd' ../../date }}</div>
+                <div class="forecast_full__date-month">{{datef 'MMMM' ../../date }}</div>
+            </td>
+        {{/if}}
+
+        <td>
+            <div class="forecast_full__header-inline">{{t type }}</div>
+            <div class="forecast_full__value-temp">
+                {{~#if temp_min}}
+                    {{~ temp_min }}…{{ temp_max ~}}
+                {{else}}
+                    {{~ temp ~}}
+                {{/if~}}
+            </div>
+        </td>
+        <td>
+            <img class="forecast_full_weather-icon" src="{{weatherIcon weather_icon }}" />
+        </td>
+        <td>{{ weather }}</td>
+        <td>{{ pressure }}</td>
+        <td>{{ humidity }}%</td>
+        <td>{{ wind_speed }}</td>
+
+        {{#if @first}}
+            <td class="forecast_full__rest" rowspan="4"></td>
+            <td class="forecast_full__rest" rowspan="4">
+                <div class="forecast_full__header-inline">восход</div>
+                <div>{{ ../../sunrise }}</div>
+            </td>
+            <td class="forecast_full__rest" rowspan="4">
+                <div class="forecast_full__header-inline">заход</div>
+                <div>{{ ../../sunset }}</div>
+            </td>
+            <td class="forecast_full__rest" rowspan="4">
+                <img class="forecast_full__moon-icon" src="{{moonIcon ../../moon_code }}" />
+            </td>
+        {{/if}}
+    </tr>
+{{/each}}

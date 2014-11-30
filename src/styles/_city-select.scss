@@ -10,86 +10,93 @@ $spritePath: '../images/city-select-sprite.png';
 .city-select
 {
     position: relative;
-}
 
-.city-select__city-name
-{
-    display: inline-block;
-    font-size: $nameFontSize;
-    min-width: 154px;
-}
+    &__city
+    {
+        &-name
+        {
+            display: inline-block;
+            font-size: $nameFontSize;
+            min-width: 154px;
+        }
 
-.city-select__city-dropdown-group
-{
-    display: inline-block;
-}
+        &-dropdown-group
+        {
+            display: inline-block;
+        }
 
-.city-select__city-other
-{
-    font-size: $otherFontSize;
-    cursor: pointer;
-}
+        &-other
+        {
+            font-size: $otherFontSize;
+            cursor: pointer;
+        }
 
-.city-select__city-other::after
-{
-    display: inline-block;
-    content: ' ';
-    width: 20px;
-    height: 10px;
-    margin-left: 5px;
-    background-image: url($spritePath);
-    background-position: -15px -1px;
-    background-repeat: no-repeat;
-}
+        &-other::after
+        {
+            display: inline-block;
+            content: ' ';
+            width: 20px;
+            height: 10px;
+            margin-left: 5px;
+            background-image: url($spritePath);
+            background-position: -15px -1px;
+            background-repeat: no-repeat;
+        }
 
-.city-select__city-dropdown
-{
-    position: absolute;
-    display: none;
-    padding: $dropdownPaddingTop $dropdownPaddingLeft $allCitiesHeight;
-    margin-top: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-}
+        &-dropdown
+        {
+            position: absolute;
+            display: none;
+            padding: $dropdownPaddingTop $dropdownPaddingLeft $allCitiesHeight;
+            margin-top: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
+            background: #fff;
+            z-index: 100;
+        }
 
-.city-select__recent-list
-{
-    list-style: none;
-    padding: 0 0 0 20px;
-}
+        &-all
+        {
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: $allCitiesHeight;
+            padding-left: $dropdownPaddingLeft;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            vertical-align: middle;
+            line-height: $allCitiesHeight;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
 
-.city-select__recent-list-element
-{
-    line-height: 22px;
-    position: relative;
-}
+    &__recent-list
+    {
+        list-style: none;
+        padding: 0;
 
-.city-select__recent-list-element_active::before
-{
-    content: ' ';
-    position: absolute;
-    left: -20px;
-    display: inline-block;
-    line-height: 22px;
-    width: 15px;
-    height: 100%;
-    background-image: url($spritePath);
-    background-position: 0;
-    background-repeat: no-repeat;
-}
+        &-link
+        {
+            position: relative;
+            margin-left: 20px;
+            color: #000;
+            text-decoration: none;
 
-.city-select__city-all
-{
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: $allCitiesHeight;
-    padding-left: $dropdownPaddingLeft;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    vertical-align: middle;
-    line-height: $allCitiesHeight;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+            &_active::before
+            {
+                content: ' ';
+                position: absolute;
+                left: -20px;
+                display: inline-block;
+                width: 15px;
+                height: 100%;
+                background-image: url($spritePath);
+                background-position: 0;
+                background-repeat: no-repeat;
+            }
+        }
+
+    }
 }

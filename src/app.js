@@ -1,38 +1,67 @@
 var Backbone = require('backbone');
-var $ = require('jquery');
 var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
+var CitySelectView = require('./views/city_select');
+var ForecastTabsView = require('./views/forecast_tabs');
 var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
+var ForecastHoursView = require('./views/forecast_hours');
 var NowView = require('./views/now');
 
-Backbone.$ = $;
+require('./utils/template_helper');
 
 var initialize = function () {
+    Backbone.$ = $;
+
     var state = new StateModel();
-    new Router({state: state});
 
-    fetchHelper(state.get('locality')).then(function (data) {
-        new ForecastShortView({
-            el: $('.forecast__short'),
-            collection: data.forecast
-        });
+    state.on('change:geoid', function () {
 
-        new ForecastFullView({
-            el: $('.forecast_full'),
-            collection: data.forecast
-        });
+        fetchHelper(state.get('geoid')).then(function (data) {
+            state.set('locality', data.locality);
 
-        new NowView({
-            el: $('.current-weather'),
-            today: data.today,
-            yesterday: data.yesterday,
-            collection: data.forecast
+            new CitySelectView({
+                el: $('.city-select'),
+                model: state
+            });
+
+            new ForecastShortView({
+                el: $('.forecast_short'),
+                collection: data.forecast,
+                state: state,
+            });
+
+            new ForecastFullView({
+                el: $('.forecast_full'),
+                collection: data.forecast,
+                state: state,
+            });
+
+            new ForecastHoursView({
+                el: $('.forecast_hours'),
+                collection: data.forecast,
+                state: state,
+            });
+
+            new NowView({
+                el: $('.current-weather'),
+                test: data,
+                today: data.today,
+                yesterday: data.yesterday,
+                state: state,
+                collection: data.forecast
+            });
         });
     });
 
-    Backbone.history.start();
+    new Router({state: state});
+    new ForecastTabsView({
+        el: $('.tabs'),
+        state: state
+    });
+
+    Backbone.history.start({pushState: true});
 }
 
 if (window) {

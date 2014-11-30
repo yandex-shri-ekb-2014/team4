@@ -3,7 +3,16 @@ var Backbone = require('backbone');
 var StateModel = Backbone.Model.extend({
     defaults: {
         tab: 'short',
-        locality: 10,
+        geoid: null,
+        locality: null,
+        recent: [
+            {
+              'geoid': 54,
+              'name': 'Екатеринбург',
+              'provinceId': 11162,
+              'countryId': 225
+            }
+        ]
     }
 });
 

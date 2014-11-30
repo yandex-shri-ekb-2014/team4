@@ -1,14 +1,25 @@
-var Backbone = require('backbone'),
-    forecastFullTemplate = require('../templates/forecast_full.hbs');
+var TabPaneView = require('./tab_pane');
+var forecastFullTemplate = require('../templates/forecast_full.hbs');
+var forecastFullDayTemplate = require('../templates/forecast_full_day.hbs');
 
-var ForecastFullView = Backbone.View.extend({
-    initialize: function () {
+var ForecastFullView = TabPaneView.extend({
+
+    tabName: 'full',
+
+    initialize: function (options) {
+        this.initializeTabs(options.state);
         this.render();
     },
 
     render: function() {
+        var daysHtml = [];
+
+        this.collection.forEach(function (model) {
+            daysHtml.push(forecastFullDayTemplate(model.toJSON()));
+        });
+
         this.$el.html(forecastFullTemplate({
-            forecast: this.collection
+            days: daysHtml
         }));
     }
 });

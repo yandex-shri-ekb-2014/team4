@@ -32,7 +32,7 @@ gulp.task('browserify', function () {
     var stream = gulp.src(['src/app.js'], {read: true})
         .pipe(browserify({
             debug: true,
-            transform: ['hbsify'],
+            transform: ['hbsfy'],
         }))
         .on('error', console.log)
         .pipe(rename('app.js'));
@@ -48,6 +48,7 @@ gulp.task('browserify', function () {
 
 gulp.task('connect', function () {
     connect.server({
+        port: process.env.PORT || 8080,
         fallback: 'index.html',
         livereload: true,
     });

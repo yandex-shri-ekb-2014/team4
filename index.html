@@ -30,46 +30,13 @@
         <div class="city_and_now_wrapper">
             <div class="city_and_now_container">
                 <!--city_select-->
-                <div class="city-select">
-                    <div class="city-select__city-name">Екатеринбург</div>
-                    <div class="city-select__city-dropdown-group">
-                        <div class="city-select__city-other button">Другой город</div>
-                        <div class="city-select__city-dropdown">
-                            <span>Последние города</span>
-                            <ul class="city-select__recent-list">
-                                <li class="city-select__recent-list-element city-select__recent-list-element_active">Екатеринбург</li>
-                                <li class="city-select__recent-list-element">Москва</li>
-                                <li class="city-select__recent-list-element">Минск</li>
-                            </ul>
-                            <div class="city-select__city-all">Все города</div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <script>
-                    (function() {
-                        var citySelector = document.getElementsByClassName('city-select')[0],
-                            cityOther = citySelector.getElementsByClassName('city-select__city-other')[0],
-                            cityDropdown = citySelector.getElementsByClassName('city-select__city-dropdown')[0];
-                        cityOther.addEventListener('click', function() {
-                            cityDropdown.style.display = 'block';
-                        });
-                        cityDropdown.addEventListener('click', function() {
-                            this.style.display = 'none';
-                        });
-                    })();
-                </script>
+                <div class="city-select"></div>
                 <!--end city_select-->
 
                 <!--now-->
                 <div class="current-weather">
 
                 </div>
-
-
-
-
 
                 <!--end now-->
             </div>
@@ -81,100 +48,12 @@
         <!--end city_select + now block-->
 
         <!--forecast-->
-            <!-- tabs -->
-                <div class="tabs">
-                    <a href="#forecast_short" class="button tabs__tab tabs__tab_left">кратко</a>
-                    <a href="#forecast_full" class="button tabs__tab tabs__tab_middle button-active">подробно</a>
-                    <a href="#forecast_hours" class="button tabs__tab tabs__tab_right">наглядно</a>
-                </div>
-            <!-- end tabs -->
-
-            <!-- full view -->
-            <table class="forecast_full"></table>
-            <!-- end full view -->
-
-            <!-- short view -->
-                <div class="forecast__short">
-
-                </div>
-            <!-- end short view -->
-
-            <!-- hours view -->
-                <div class="forecast_hours">
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
-                        <div class="forecast_hours__value">-1</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
-                        <div class="forecast_hours__value">-2</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
-                        <div class="forecast_hours__value">0</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
-                        <div class="forecast_hours__value">+1</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-4">
-                        <div class="forecast_hours__value">+3</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-6">
-                        <div class="forecast_hours__value">+5</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
-                        <div class="forecast_hours__value">0</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
-                        <div class="forecast_hours__value">-3</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
-                        <div class="forecast_hours__value">-5</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
-                        <div class="forecast_hours__value">-6</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
-                        <div class="forecast_hours__value">-6</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-6">
-                        <div class="forecast_hours__value">-6</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
-                        <div class="forecast_hours__value">-3</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-0">
-                        <div class="forecast_hours__value">0</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
-                        <div class="forecast_hours__value">+1</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-6">
-                        <div class="forecast_hours__value">+5</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-8">
-                        <div class="forecast_hours__value">+8</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
-                        <div class="forecast_hours__value">+2</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-plus-2">
-                        <div class="forecast_hours__value">+2</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-0">
-                        <div class="forecast_hours__value">0</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
-                        <div class="forecast_hours__value">-1</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-2">
-                        <div class="forecast_hours__value">-1</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-4">
-                        <div class="forecast_hours__value">-3</div>
-                    </div>
-                    <div class="forecast_hours__column forecast_hours__column-temperature-minus-10">
-                        <div class="forecast_hours__value">-9</div>
-                    </div>
-                </div>
-            <!-- end hours view -->
+            <div class="tabs"></div>
+            <div class="forecast">
+                <table class="forecast_full"></table>
+                <div class="forecast_short"> </div>
+                <div class="forecast_hours"></div>
+            </div>
         <!--end forecast-->
 
         <!--direct-->
@@ -273,6 +152,7 @@
         </div>
     </div>
     <!--end footer-->
-    <script src="/assets/js/app.js" type="text/javascript"></script>
+    <script src="//yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>

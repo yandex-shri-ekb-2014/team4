@@ -1,23 +1,41 @@
-var $ = require('jquery');
 var Backbone = require('backbone');
-
-Backbone.$ = $;
+var geolocator = require('./utils/geolocator');
 
 var Router = Backbone.Router.extend({
     state: null,
 
     routes: {
-        ':locality/:tab': 'index',
+        '': 'autoDetect',
+        ':geoid/:tab': 'index',
     },
 
     initialize: function (options) {
         this.state = options.state;
+        this.state.on('change', function (state) {
+            var geoid = state.get('geoid'),
+                tab = state.get('tab');
+            if (geoid !== undefined && tab !== undefined) {
+                Backbone.history.navigate(
+                    geoid + '/' + tab,
+                    { trigger: true }
+                );
+            }
+        });
     },
 
-    index: function (locality, tab) {
+    autoDetect: function () {
+        var self = this;
+
+        geolocator()
+            .then(function (data) {
+                self.state.set('geoid', data.geoid);
+            });
+    },
+
+    index: function (geoid, tab) {
         this.state.set({
-            locality: locality,
-            tab: tab,
+            geoid: geoid,
+            tab: tab
         });
     }
 });

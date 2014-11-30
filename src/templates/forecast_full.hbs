@@ -7,76 +7,10 @@
     </tr>
 </thead>
 <tbody>
-    <tr class="forecast_full__daytime">
-        <td class="forecast_full__weekday" rowspan="4">вс</td>
-        <td class="forecast_full__date" rowspan="4"><div class="forecast_full__date-day">28</div>
-            <div class="forecast_full__date-month">октября</div>
-        </td>
-        <td>
-            <div class="forecast_full__header-inline">утром</div>
-            <div class="forecast_full__value-temp">-33…-44</div>
-        </td>
-        <td>
-            <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
-        </td>
-        <td>облачно, небольшой дождь</td>
-        <td>740</td>
-        <td>70%</td>
-        <td>4.9</td>
-        <td class="forecast_full__rest" rowspan="4"></td>
-        <td class="forecast_full__rest" rowspan="4">
-            <div class="forecast_full__header-inline">восход</div>
-            <div>07:57</div>
-        </td>
-        <td class="forecast_full__rest" rowspan="4">
-            <div class="forecast_full__header-inline">заход</div>
-            <div>17:57</div>
-        </td>
-        <td class="forecast_full__rest" rowspan="4">
-            <img class="forecast_full__moon-icon" src="http://ekb.shri14.ru/icons/icon_moon_13.svg" />
-        </td>
-        <td class="forecast_full__rest" rowspan="4">
-            <div class="forecast_full__header-inline">магнитное поле</div>
-            <div>слабо возмущенное</div>
-        </td>
-    </tr>
-    <tr class="forecast_full__daytime">
-        <td>
-            <div class="forecast_full__header-inline">днем</div>
-            <div class="forecast_full__value-temp">-3…0</div>
-        </td>
-        <td>
-            <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
-        </td>
-        <td>облачно</td>
-        <td>740</td>
-        <td>70%</td>
-        <td>4.9</td>
-    </tr>
-    <tr class="forecast_full__daytime">
-        <td>
-            <div class="forecast_full__header-inline">вечером</div>
-            <div class="forecast_full__value-temp">-5…-4</div>
-        </td>
-        <td>
-            <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
-        </td>
-        <td>облачно, небольшой дождь</td>
-        <td>740</td>
-        <td>70%</td>
-        <td>4.9</td>
-    </tr>
-    <tr class="forecast_full__daytime">
-        <td>
-            <div class="forecast_full__header-inline">ночью</div>
-            <div class="forecast_full__value-temp">-5…-4</div>
-        </td>
-        <td>
-            <img class="forecast_full_weather-icon" src="http://ekb.shri14.ru/icons/bkn_d.svg" />
-        </td>
-        <td>облачно, небольшой дождь</td>
-        <td>740</td>
-        <td>70%</td>
-        <td>4.9</td>
-    </tr>
+{{#each days}}
+    {{{ this }}}
+    {{#unless @last}}
+        <tr><td></td><tr>
+    {{/unless}}
+{{/each}}
 </tbody>
