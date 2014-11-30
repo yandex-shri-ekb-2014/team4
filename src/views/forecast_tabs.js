@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var tabsTemplate = require('../templates/tabs.hbs');
+var tabsTemplate = require('../templates/forecast_tabs.hbs');
 
 var tabs = [
     {
@@ -17,26 +17,26 @@ var tabs = [
 ];
 
 var ForecastTabView = Backbone.View.extend({
-    template: tabsTemplate,
-    el: '.tabs',
+    events: {
+        'click a': 'transition'
+    },
+
     initialize: function(options) {
         this.state = options.state;
         this.state.on('change', this.render, this);
         this.render();
     },
-    events: {
-        'click a': 'transition'
-    },
+
     transition: function(e) {
+        this.state.set('tab', $(e.currentTarget).data('tab'));
         e.preventDefault();
-        var href = $(e.currentTarget).attr('href')
-        Backbone.history.navigate(href, { trigger: true });
     },
+
     render: function(){
         if (tabs.length > 0) {
-            this.$el.html(this.template({
-                tabs: tabs,
-                state: this.state.toJSON()
+            this.$el.html(tabsTemplate({
+                state: this.state.toJSON(),
+                tabs: tabs
             }));
         }
     }

@@ -1,22 +1,13 @@
-var Backbone = require('backbone'),
-    forecastShortTemplate = require('../templates/forecast_short.hbs');
+var TabPaneView = require('./tab_pane');
+var forecastShortTemplate = require('../templates/forecast_short.hbs');
 
-var ForecastShortView = Backbone.View.extend({
+var ForecastShortView = TabPaneView.extend({
 
     tabName: 'short',
 
     initialize: function (options) {
-        options.state.on('change:tab', this.tabChanged, this);
-        this.tabChanged(options.state);
+        this.initializeTabs(options.state);
         this.render();
-    },
-
-    tabChanged: function (state) {
-        if (this.tabName === state.get('tab')) {
-            this.$el.show();
-        } else {
-            this.$el.hide();
-        }
     },
 
     render: function() {
