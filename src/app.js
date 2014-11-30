@@ -16,7 +16,7 @@ var TitleView = require('./views/title');
 require('./utils/template_helper');
 
 var initialize = function () {
-    $('.overlay').show();
+    var $overlay = $('.overlay').show();
 
     Backbone.$ = $;
     var state = new StateModel(),
@@ -55,18 +55,17 @@ var initialize = function () {
     });
 
     views.forecastFull.on('rendered', function(){
-        $('.overlay').hide();
+        $overlay.hide();
         $('.middle__wrapper').css('visibility', 'visible');
     });
 
     state.on('change:geoid', function () {
+        $overlay.show();
         fetchHelper(state.get('geoid')).then(function (data) {
             state.set('locality', data.locality);
             models.today.set(data.today);
             models.yesterday.set(data.yesterday);
             models.forecast.reset(data.forecast);
-
-
         });
     });
 
