@@ -1,17 +1,14 @@
-var FactModel = require('../models/fact');
-var ForecastCollection = require('../collections/forecast');
-
-var fetch = function (locality) {
+var fetch = function (geoid) {
     var deferred = $.Deferred();
 
-    $.ajax('http://ekb.shri14.ru/api/localities/' + locality)
+    $.ajax('http://ekb.shri14.ru/api/localities/' + geoid)
         .error(deferred.reject)
         .success(function (data) {
             deferred.resolve({
                 locality: data.info,
-                today: new FactModel(data.fact),
-                yesterday: new FactModel(data.yesterday),
-                forecast: new ForecastCollection(data.forecast),
+                today: data.fact,
+                yesterday: data.yesterday,
+                forecast: data.forecast
             });
         });
 
