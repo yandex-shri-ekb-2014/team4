@@ -84,16 +84,16 @@ var ForecastHoursView = TabPaneView.extend({
         };
 
         var x = d3.scale.linear()
-            .domain([0, 24])
+            .domain([0, tempArr.length])
             .range([0, width]);
 
         var data = d3.layout.histogram()
-            .bins(x.ticks(24))
+            .bins(x.ticks(tempArr.length))
             (tempPxArr);
 
         var xAxis = d3.svg.axis()
             .scale(x)
-            .ticks(24)
+            .ticks(tempArr.length)
             .orient('bottom')
             .tickFormat(formatHours);
 
