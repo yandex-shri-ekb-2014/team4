@@ -1,7 +1,8 @@
-var TabPaneView = require('./tab_pane'),
-    d3       = require('d3-browserify'),
-    temp2color = require('../utils/temp2color');
+var TabPaneView = require('./tab_pane');
 var forecastHoursTemplate = require('../templates/forecast_hours.hbs');
+var d3 = require('d3-browserify');
+var temp2color = require('../utils/temp2color');
+var dateUtils = require('../utils/dateutils');
 
 function getMaxOfArray(numArray) {
     return Math.max.apply(null, numArray);
@@ -35,17 +36,25 @@ var ForecastHoursView = TabPaneView.extend({
     },
 
     render: function() {
-        var date      = new Date(),
-            nowDate   = date.getDate(),
-            nowHour   = date.getHours();
-            tempArr   = [];
+        var date          = new Date(),
+            nowDate       = date.getDate(),
+            nowHour       = date.getHours();
+            tempArr       = [],
+            tomorrowDate  = dateUtils.getTomorrow().getDate();
 
         this.collection.forEach(function (model) {
-            if (nowDate === model.get('date').getDate()) {
+            var modelDate = model.get('date').getDate(),
+                isTomorrow = tomorrowDate === modelDate,
+                isToday = nowDate === modelDate;
+
+            if (isToday || isTomorrow) {
                 var hours = model.get('hours');
 
-                hours.forEach(function(hour) {
-                    tempArr.push(hour.temp);
+                hours.forEach(function(hourData) {
+                    var hour = parseInt(hourData.hour);
+                    if ((isToday && hour >= nowHour) || (isTomorrow && hour < nowHour)) {
+                        tempArr.push(hourData.temp);
+                    }
                 });
             }
         });
@@ -56,7 +65,7 @@ var ForecastHoursView = TabPaneView.extend({
                 bottom: 30,
                 left:   20
             },
-            width = 1400 - margin.left - margin.right,
+            width = 960 - margin.left - margin.right,
             height = 250 - margin.top - margin.bottom;
 
         var tempPxArr = getPxArrOfTempArr(tempArr, height, 2);
@@ -64,7 +73,15 @@ var ForecastHoursView = TabPaneView.extend({
         this.$el.html(forecastHoursTemplate());
 
         // преобразование числа в подобие времени
-        var formatHours = function(d) { return d+':00'; };
+        var formatHours = function(d) {
+            d = d + nowHour;
+
+            if (d > 23) {
+                d -= 24;
+            }
+
+            return d + ':00';
+        };
 
         var x = d3.scale.linear()
             .domain([0, 24])
@@ -110,14 +127,6 @@ var ForecastHoursView = TabPaneView.extend({
             .attr('y', 5)
             .attr('x', x(data[0].dx) / 2)
             .attr('text-anchor', 'middle')
-            .attr('fill-opacity', function(d,i) {
-                var opacity = '1';
-
-                if (i < nowHour) {
-                    opacity = '0.4'
-                }
-                return opacity;
-            })
             .text(function(d,i) {
                 var tempNow = tempArr[i],
                     sign    = '';
