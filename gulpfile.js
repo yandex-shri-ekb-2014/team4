@@ -7,6 +7,15 @@ var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var isProduction = -1 !== process.argv.indexOf('--prod');
+var install = require("gulp-install");
+var spawn = require('child_process').spawn;
+var gutil = require('gulp-util');
+var serverPort = process.env.PORT || 8080;
+
+gulp.task('install_deps', function() {
+    gulp.src(['./bower.json', './package.json'])
+        .pipe(install());
+});
 
 gulp.task('sass', function() {
     var stream = gulp.src('src/styles/base.scss')
@@ -62,5 +71,27 @@ gulp.task('watch', function () {
     });
 });
 
+gulp.task('test', function () {
+    var tests = [
+        'tests/city_title.js',
+        'tests/last_cities.js',
+        'tests/now_block_exists.js',
+        'tests/forecast_url.js',
+        'tests/tab_clicker.js'
+    ];
+
+    var casperChild = spawn('casperjs', ['test'].concat(tests));
+
+    casperChild.stdout.on('data', function (data) {
+        gutil.log('CasperJS:', data.toString().slice(0, -1)); // Remove \n
+    });
+
+    casperChild.on('close', function (code) {
+        var success = code === 0; // Will be 1 in the event of failure
+
+        // Do something with success here
+    });
+});
+
 gulp.task('build', ['sass', 'browserify']);
-gulp.task('default', ['build', 'connect', 'watch']);
+gulp.task('default', ['install_deps','build', 'connect', 'watch']);
