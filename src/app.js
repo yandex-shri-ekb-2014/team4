@@ -11,7 +11,6 @@ Backbone.$ = $;
 
 var initialize = function () {
     var state = new StateModel();
-
     new Router({state: state});
 
     fetchHelper(state.get('locality')).then(function (data) {
@@ -27,9 +26,9 @@ var initialize = function () {
 
         new NowView({
             el: $('.current-weather'),
-            test: data,
             today: data.today,
-            yesterday: data.yesterday
+            yesterday: data.yesterday,
+            collection: data.forecast
         });
     });
 
