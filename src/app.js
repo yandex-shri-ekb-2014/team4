@@ -47,7 +47,10 @@ var initialize = function () {
             })
         };
 
-    var Backbone = require('backbone');
+    new Suggest({
+        el: $('.header__search'),
+        state: state
+    });
 
     state.on('change:geoid', function () {
         fetchHelper(state.get('geoid')).then(function (data) {

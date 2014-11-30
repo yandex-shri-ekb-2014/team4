@@ -17,6 +17,7 @@ var Suggest = Backbone.View.extend({
     },
 
     update: function(e) {
+        self = this;
 
         $('input').autocomplete({
             source: function( request, response ) {
@@ -27,69 +28,35 @@ var Suggest = Backbone.View.extend({
                         });
                         response (cities);
                     });
-            }
-        });
-
-
-
-        /*var query = $.trim(e.target.value);
-
-        var citiesReq = getCities(query).then(function(data) {
-            var cities        = data,
-                citiesArr     = [],
-                mincharacters = 1;
-
-            if (cities.length > 0) {
-                cities.forEach(function(el) {
-                    citiesArr.push(el.name);
-                });
-            }
-
-            if(citiesArr.length > 20) {
-                mincharacters = 3;
-            }
-
-            $( "input" ).autocomplete({
-                source: citiesArr,
-                minLength: mincharacters
-            });
-        });*/
-
-
-
-        /*var cities = getCities($.trim(e.target.value)).success(function (data) {
-
-        });*/
-        /*cities = [];
-
-        $.ajax({
-            url: "http://ekb.shri14.ru/api/suggest",
-            dataType: "json",
-            data: {
-                query: $.trim(e.target.value)
             },
-            success: function( data ) {
-                cities = data;
+            select: function(event, ui){
+                self.selectCity(ui.item.value);
             }
         });
 
-        console.log(cities);*/
-
-        //var q = $.trim(e.target.value);
+        if (e.key === 'Enter') {
+            this.selectCity();
+        }
     },
 
-    selectCity: function(e) {
-        var query = $.trim($('input').val());
+    selectCity: function(query) {
+        query = typeof(query) === 'string' ? query : $.trim($('input').val());
 
-        var citiesReq = getCities(query).then(function(data) {
+        var state = this.state;
+
+        getCities(query).then(function(data) {
             if (data.length === 1) {
-                console.log(data);
+                var geoId = data.map(function(el) {
+                    return el.geoid;
+                });
+
+                state.set('geoid', geoId[0]);
             }
         });
     },
 
     render: function() {
-        //$('input').val('');
+        $('input').val('');
     }
 });
 
