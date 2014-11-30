@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
+var Suggest = require('./views/suggest');
 var FactModel = require('./models/fact');
 var ForecastCollection = require('./collections/forecast');
 var CitySelectView = require('./views/city_select');
@@ -47,6 +48,11 @@ var initialize = function () {
                 state: state,
             })
         };
+
+    new Suggest({
+        el: $('.header__search'),
+        state: state
+    });
 
     views.forecastFull.on('rendered', function(){
         $('.overlay').hide();
