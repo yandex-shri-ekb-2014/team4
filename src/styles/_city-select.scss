@@ -77,6 +77,10 @@ $spritePath: '../images/city-select-sprite.png';
         list-style: none;
         padding: 0;
 
+        &-element {
+            line-height: 24px;
+        }
+
         &-link
         {
             position: relative;
@@ -88,6 +92,7 @@ $spritePath: '../images/city-select-sprite.png';
             {
                 content: ' ';
                 position: absolute;
+                top: 0;
                 left: -20px;
                 display: inline-block;
                 width: 15px;

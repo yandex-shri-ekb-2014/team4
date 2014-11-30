@@ -7,7 +7,8 @@ var CitySelectView = Backbone.View.extend({
     model: State,
 
     events: {
-        'click .city-select__city-other': 'toggleDropdown'
+        'click .city-select__city-other': 'toggleDropdown',
+        'click .city-select__recent-list-link': 'changeLocality'
     },
 
     initialize: function () {
@@ -32,8 +33,12 @@ var CitySelectView = Backbone.View.extend({
         this.$el.find('.city-select__city-dropdown').hide();
     },
 
+    changeLocality: function (e) {
+        this.model.set({geoid: $(e.currentTarget).data('geoid')});
+        e.preventDefault();
+    },
+
     render: function() {
-        console.log(this.model.toJSON());
         this.$el.html(citySelectTemplate(this.model.toJSON()));
     }
 });
