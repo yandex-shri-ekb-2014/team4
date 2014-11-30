@@ -2,15 +2,19 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ШРИ [team4]</title>
+    <title>Погода</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+    <div class="overlay">
+        <div class="overlay__preloader overlay__preloader_centered">
+             <img src="/assets/images/ajax-loader.gif">
+        </div>
+    </div>
     <!--layout-->
     <div class="layout">
         <!--header-->
         <div class="layout">
-
             <div class="header">
                 <a href="#">
                     <img src="/assets/images/header__logo.png" alt="" class="header__logo">
@@ -26,79 +30,80 @@
         </div>
         <!--end header-->
 
-        <!--city_select + now block-->
-        <div class="city_and_now_wrapper">
-            <div class="city_and_now_container">
-                <!--city_select-->
-                <div class="city-select"></div>
-                <!--end city_select-->
+        <div class="middle__wrapper">
+            <!--city_select + now block-->
+            <div class="city_and_now_wrapper">
+                <div class="city_and_now_container">
+                    <!--city_select-->
+                    <div class="city-select"></div>
+                    <!--end city_select-->
 
-                <!--now-->
-                <div class="current-weather">
+                    <!--now-->
+                    <div class="current-weather">
 
+                    </div>
+
+                    <!--end now-->
+                </div>
+                <div class="current-weather_adv-wrapper">
+                    <img class="current-weather_adv_image" src="/assets/images/adv_right.png" alt="">
                 </div>
 
-                <!--end now-->
             </div>
-            <div class="current-weather_adv-wrapper">
-                <img class="current-weather_adv_image" src="/assets/images/adv_right.png" alt="">
-            </div>
+            <!--end city_select + now block-->
 
-        </div>
-        <!--end city_select + now block-->
-
-        <!--forecast-->
-            <div class="tabs"></div>
-            <div class="forecast">
-                <table class="forecast_full"></table>
-                <div class="forecast_short"> </div>
-                <div class="forecast_hours"></div>
-            </div>
-        <!--end forecast-->
-
-        <!--direct-->
-        <div class="direct">
-            <div class="direct__link">
-                <a href="https://direct.yandex.ru/" class="direct__link-a">Яндекс.Директ</a>
-            </div>
-            <div class="direct__row">
-                <div class="direct__block">
-                    <img class="direct__block-img" src="/assets/images/direct__block1.png">
-                    <div class="direct__block__info">
-                        <h4 class="direct__block-title">Студия элитной итальянской мебели</h4>
-                        <p class="direct__block-text">
-                            Мебель по ценам ниже среднерыночных! Узнайте на сайте! Безграничный выбор!
-                        </p>
-                        <a class="direct__block-link" href="#">Адрес и телефон artplay-mebel.ru</a>
-                    </div>
+            <!--forecast-->
+                <div class="tabs"></div>
+                <div class="forecast">
+                    <table class="forecast_full"></table>
+                    <div class="forecast_short"> </div>
+                    <div class="forecast_hours"></div>
                 </div>
-                <div class="direct__block direct__block-middle">
-                    <div class="direct__block-img">
-                        <img src="/assets/images/direct__block2.png">
-                    </div>
-                    <div class="direct__block__info">
-                        <h4 class="direct__block-title">SEO. Поисковая оптимизация сайиа!</h4>
-                        <p class="direct__block-text">
-                            По оценке экспертов мы №1 среди 183 SEO-компаний в рейтинге SeoNews!
-                        </p>
-                        <a class="direct__block-link" href="#">ashmanov.com</a>
-                    </div>
+            <!--end forecast-->
+
+            <!--direct-->
+            <div class="direct">
+                <div class="direct__link">
+                    <a href="https://direct.yandex.ru/" class="direct__link-a">Яндекс.Директ</a>
                 </div>
-                <div class="direct__block">
-                    <div class="direct__block-img">
-                        <img src="/assets/images/direct__block3.png">
+                <div class="direct__row">
+                    <div class="direct__block">
+                        <img class="direct__block-img" src="/assets/images/direct__block1.png">
+                        <div class="direct__block__info">
+                            <h4 class="direct__block-title">Студия элитной итальянской мебели</h4>
+                            <p class="direct__block-text">
+                                Мебель по ценам ниже среднерыночных! Узнайте на сайте! Безграничный выбор!
+                            </p>
+                            <a class="direct__block-link" href="#">Адрес и телефон artplay-mebel.ru</a>
+                        </div>
                     </div>
-                    <div class="direct__block__info">
-                        <h4 class="direct__block-title">Отели Греции онлайн - Херсонес</h4>
-                        <p class="direct__block-text">
-                            Херсонес - 176 отелей на Booking.com. Бесплатная отмена брони. Выбирайте!
-                        </p>
-                        <a class="direct__block-link" href="#">booking.com</a>
+                    <div class="direct__block direct__block-middle">
+                        <div class="direct__block-img">
+                            <img src="/assets/images/direct__block2.png">
+                        </div>
+                        <div class="direct__block__info">
+                            <h4 class="direct__block-title">SEO. Поисковая оптимизация сайиа!</h4>
+                            <p class="direct__block-text">
+                                По оценке экспертов мы №1 среди 183 SEO-компаний в рейтинге SeoNews!
+                            </p>
+                            <a class="direct__block-link" href="#">ashmanov.com</a>
+                        </div>
+                    </div>
+                    <div class="direct__block">
+                        <div class="direct__block-img">
+                            <img src="/assets/images/direct__block3.png">
+                        </div>
+                        <div class="direct__block__info">
+                            <h4 class="direct__block-title">Отели Греции онлайн - Херсонес</h4>
+                            <p class="direct__block-text">
+                                Херсонес - 176 отелей на Booking.com. Бесплатная отмена брони. Выбирайте!
+                            </p>
+                            <a class="direct__block-link" href="#">booking.com</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--end direct-->
+            <!--end direct-->
 
         <!--footer_menu-->
         <div class="footer_menu">
@@ -131,26 +136,27 @@
     </div>
     <!--end layout-->
     <!--footer-->
-    <div class="footer">
-        <div class="footer__row">
-            <div class="footer__block footer__block_left">
-                <a href="#" class="footer-link footer-link-first">Пользовательское соглашение</a>
-                <a href="#" class="footer-link">Мобильная версия</a>
-            </div>
-            <div class="footer__block footer__block_wide">
-                <span class="footer__block_wide_statistic">Прогноз погоды: Екатеринбург и еще 12268 городов в 229 странах</span>
-                <span>Данные предоставлены <a href="#" class="footer-link footer-link-text">FORECA</a></span>
-            </div>
-            <div class="footer__block footer__block_links">
-                <a href="#" class="footer-link footer-link-first">Статистика</a>
-                <a href="#" class="footer-link">Обратная связь</a>
-                <a href="#" class="footer-link">Реклама</a>
-            </div>
-            <div class="footer__block footer__block_right">
-                <span>&copy; 2000&mdash;2014 &laquo;<a href="#" class="footer-link footer-link-text">Яндекс</a>&raquo;</span>
+        <div class="footer">
+            <div class="footer__row">
+                <div class="footer__block footer__block_left">
+                    <a href="#" class="footer-link footer-link-first">Пользовательское соглашение</a>
+                    <a href="#" class="footer-link">Мобильная версия</a>
+                </div>
+                <div class="footer__block footer__block_wide">
+                    <span class="footer__block_wide_statistic">Прогноз погоды: Екатеринбург и еще 12268 городов в 229 странах</span>
+                    <span>Данные предоставлены <a href="#" class="footer-link footer-link-text">FORECA</a></span>
+                </div>
+                <div class="footer__block footer__block_links">
+                    <a href="#" class="footer-link footer-link-first">Статистика</a>
+                    <a href="#" class="footer-link">Обратная связь</a>
+                    <a href="#" class="footer-link">Реклама</a>
+                </div>
+                <div class="footer__block footer__block_right">
+                    <span>&copy; 2000&mdash;2014 &laquo;<a href="#" class="footer-link footer-link-text">Яндекс</a>&raquo;</span>
+                </div>
             </div>
         </div>
-    </div>
+    </div> <!--middle__wrapper end->
     <!--end footer-->
     <script src="//yandex.st/jquery/2.1.1/jquery.min.js"></script>
     <script src="/assets/js/app.js"></script>

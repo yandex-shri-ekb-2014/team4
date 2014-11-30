@@ -5,10 +5,9 @@
     "backbone": "~1.1.2",
     "handlebars": "~2.0.0",
     "d3-browserify": "3.4.12",
-    "datef": "0.0.5"
-  },
-  "devDependencies": {
     "casperjs": "~1.1.0",
+    "datef": "0.0.5",
+    "express": "~4.10.4",
     "gulp": "~3.8.10",
     "gulp-autoprefixer": "~1.0.1",
     "gulp-browserify": "~0.5.0",
@@ -20,5 +19,8 @@
     "gulp-uglify": "~1.0.1",
     "gulp-util": "^3.0.1",
     "hbsfy": "~2.2.0"
+  },
+  "scripts": {
+    "postinstall": "gulp build --prod"
   }
 }
