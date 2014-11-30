@@ -20,7 +20,7 @@
     "hbsfy": "~2.2.0"
   },
   "devDependencies": {
-    "casperjs": "~1.1.0"
+    "casperjs": "*"
   },
   "main": "src/server.js",
   "scripts": {
