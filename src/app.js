@@ -26,6 +26,7 @@ var initialize = function () {
             now: new NowView({
                 el: $('.current-weather'),
                 collection: models.forecast,
+                yesterday: models.yesterday,
                 state: state,
             }),
             forecastFull: new ForecastFullView({
