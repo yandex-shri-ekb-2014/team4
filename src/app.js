@@ -21,11 +21,6 @@ var initialize = function () {
         fetchHelper(state.get('geoid')).then(function (data) {
             state.set('locality', data.locality);
 
-            new CitySelectView({
-                el: $('.city-select'),
-                model: state
-            });
-
             new ForecastShortView({
                 el: $('.forecast_short'),
                 collection: data.forecast,
@@ -55,9 +50,15 @@ var initialize = function () {
     });
 
     new Router({state: state});
+
     new ForecastTabsView({
         el: $('.tabs'),
         state: state
+    });
+
+    new CitySelectView({
+        el: $('.city-select'),
+        model: state
     });
 
     Backbone.history.start({pushState: true});
