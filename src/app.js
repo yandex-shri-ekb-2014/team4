@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
+var Suggest = require('./views/suggest');
 var CitySelectView = require('./views/city_select');
 var ForecastTabsView = require('./views/forecast_tabs');
 var ForecastShortView = require('./views/forecast_short');
@@ -16,6 +17,11 @@ var initialize = function () {
 
     var state = new StateModel();
 
+    new Suggest({
+        el: $('.header__search'),
+        state: state
+    });
+
     state.on('change:geoid', function () {
 
         fetchHelper(state.get('geoid')).then(function (data) {
@@ -29,19 +35,19 @@ var initialize = function () {
             new ForecastShortView({
                 el: $('.forecast_short'),
                 collection: data.forecast,
-                state: state,
+                state: state
             });
 
             new ForecastFullView({
                 el: $('.forecast_full'),
                 collection: data.forecast,
-                state: state,
+                state: state
             });
 
             new ForecastHoursView({
                 el: $('.forecast_hours'),
                 collection: data.forecast,
-                state: state,
+                state: state
             });
 
             new NowView({
@@ -49,7 +55,7 @@ var initialize = function () {
                 test: data,
                 today: data.today,
                 yesterday: data.yesterday,
-                state: state,
+                state: state
             });
         });
     });
