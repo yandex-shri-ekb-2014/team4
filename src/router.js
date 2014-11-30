@@ -29,6 +29,8 @@ var Router = Backbone.Router.extend({
         geolocator()
             .then(function (data) {
                 self.state.set('geoid', data.geoid);
+            }, function () {
+                self.state.set('geoid', 213);
             });
     },
 
