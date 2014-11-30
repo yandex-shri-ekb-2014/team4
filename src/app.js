@@ -10,6 +10,7 @@ var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
 var ForecastHoursView = require('./views/forecast_hours');
 var NowView = require('./views/now');
+var TitleView = require('./views/title');
 
 require('./utils/template_helper');
 
@@ -75,7 +76,12 @@ var initialize = function () {
         model: state
     });
 
-    Backbone.history.start({pushState: true})
+    new TitleView({
+        el: $('title'),
+        model: state
+    });
+
+    Backbone.history.start({pushState: true});
 
 }
 

@@ -9,7 +9,7 @@ var geolocator = function () {
                 ].join(','))
                 .error(deferred.reject)
                 .success(deferred.resolve);
-        });
+        }, deferred.reject, {timeout: 3000});
     } else {
         deferred.reject('unsupported');
     }
