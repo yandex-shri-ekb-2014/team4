@@ -8,7 +8,7 @@ var ForecastFullView = TabPaneView.extend({
 
     initialize: function (options) {
         this.initializeTabs(options.state);
-        this.render();
+        this.collection.on('reset', this.render, this);
     },
 
     render: function() {

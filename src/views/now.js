@@ -2,15 +2,16 @@ var Backbone = require('backbone');
 var nowTemplate = require('../templates/now.hbs');
 
 NowView = Backbone.View.extend({
-    initialize: function(options) {
-        this.forecast = options.collection;
-        this.render();
+
+    initialize: function() {
+        this.collection.on('reset', this.render, this);
     },
+
     render: function() {
-        var current_day = this.forecast.models[0].get('parts').slice(0,4),
-        next_day = this.forecast.models[1].get('parts').slice(0,4),
-        sunrise = this.forecast.models[0].get('sunrise'),
-        sunset = this.forecast.models[0].get('sunset'),
+        var current_day = this.collection.models[0].get('parts').slice(0,4),
+        next_day = this.collection.models[1].get('parts').slice(0,4),
+        sunrise = this.collection.models[0].get('sunrise'),
+        sunset = this.collection.models[0].get('sunset'),
         hour = new Date().getHours();
 
         if (hour >= 0 && hour <= 5){
@@ -28,11 +29,12 @@ NowView = Backbone.View.extend({
         parts_next_day =  next_day.slice(0,4-parts_today.length),
         parts_for_now_block = parts_today.concat(parts_next_day);
 
-        parts_for_now_block[0].sunset = this.forecast.models[0].get('sunset');
-        parts_for_now_block[0].sunrise = this.forecast.models[0].get('sunrise');
+        parts_for_now_block[0].sunset = this.collection.models[0].get('sunset');
+        parts_for_now_block[0].sunrise = this.collection.models[0].get('sunrise');
 
         this.$el.html(nowTemplate({parts: parts_for_now_block}));
     }
+
 });
 
 module.exports = NowView;
