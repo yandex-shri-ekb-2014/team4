@@ -5,7 +5,6 @@
     "backbone": "~1.1.2",
     "handlebars": "~2.0.0",
     "d3-browserify": "3.4.12",
-    "casperjs": "~1.1.0",
     "datef": "0.0.5",
     "express": "~4.10.4",
     "gulp": "~3.8.10",
@@ -19,6 +18,9 @@
     "gulp-uglify": "~1.0.1",
     "gulp-util": "^3.0.1",
     "hbsfy": "~2.2.0"
+  },
+  "devDependencies": {
+    "casperjs": "~1.1.0"
   },
   "main": "src/server.js",
   "scripts": {
