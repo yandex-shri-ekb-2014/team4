@@ -34,7 +34,7 @@ var Suggest = Backbone.View.extend({
             }
         });
 
-        if (e.key === 'Enter') {
+        if (e.keyCode === 13) {
             this.selectCity();
         }
     },
