@@ -55,7 +55,7 @@ var initialize = function () {
 }
 
 if (window) {
-    window.onload = initialize();
+    window.onload = initialize;
 } else {
     initialize();
 }
