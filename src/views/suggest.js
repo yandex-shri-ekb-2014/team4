@@ -45,7 +45,7 @@ var Suggest = Backbone.View.extend({
         var state = this.state;
 
         getCities(query).then(function(data) {
-            if (data.length === 1) {
+            if (data.length > 0) {
                 var geoId = data.map(function(el) {
                     return el.geoid;
                 });
