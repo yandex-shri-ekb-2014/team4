@@ -14,8 +14,9 @@ var NowView = require('./views/now');
 require('./utils/template_helper');
 
 var initialize = function () {
-    Backbone.$ = $;
+    $('.overlay').show();
 
+    Backbone.$ = $;
     var state = new StateModel(),
         models = {
             today: new FactModel(),
@@ -46,13 +47,19 @@ var initialize = function () {
             })
         };
 
+    views.forecastFull.on('rendered', function(){
+        $('.overlay').hide();
+        $('.middle__wrapper').css('visibility', 'visible');
+    });
+
     state.on('change:geoid', function () {
         fetchHelper(state.get('geoid')).then(function (data) {
             state.set('locality', data.locality);
-
             models.today.set(data.today);
             models.yesterday.set(data.yesterday);
             models.forecast.reset(data.forecast);
+
+
         });
     });
 
@@ -68,7 +75,8 @@ var initialize = function () {
         model: state
     });
 
-    Backbone.history.start({pushState: true});
+    Backbone.history.start({pushState: true})
+
 }
 
 if (window) {
