@@ -23,13 +23,11 @@ var initialize = function () {
             forecast: new ForecastCollection()
         },
         views = {
-            // @todo
-            // now: new NowView({
-            //     el: $('.current-weather'),
-            //     today: models.today,
-            //     yesterday: models.yesterday,
-            //     state: state,
-            // }),
+            now: new NowView({
+                el: $('.current-weather'),
+                collection: models.forecast,
+                state: state,
+            }),
             forecastFull: new ForecastFullView({
                 el: $('.forecast_full'),
                 collection: models.forecast,
