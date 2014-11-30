@@ -35,7 +35,6 @@ NowView = Backbone.View.extend({
         parts_next_day =  next_day.slice(0,4-parts_today.length),
         parts_for_now_block = parts_today.concat(parts_next_day),
         yesterday_temp = this.yesterday.get('temp');
-        console.log('Y temp', yesterday_temp);
         parts_for_now_block[0].sunset = this.collection.models[0].get('sunset');
         parts_for_now_block[0].sunrise = this.collection.models[0].get('sunrise');
 
