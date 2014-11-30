@@ -1,4 +1,4 @@
-var Backbone = require('backbone'),
+var TabPaneView = require('./tab_pane'),
     d3       = require('d3-browserify'),
     temp2color = require('../utils/temp2color');
 var forecastHoursTemplate = require('../templates/forecast_hours.hbs');
@@ -25,22 +25,13 @@ function getPxArrOfTempArr(tempArr, height, divisionMargin) {
     return pxArr;
 }
 
-var ForecastHoursView = Backbone.View.extend({
+var ForecastHoursView = TabPaneView.extend({
 
     tabName: 'hours',
 
     initialize: function (options) {
-        options.state.on('change:tab', this.tabChanged, this);
-        this.tabChanged(options.state);
+        this.initializeTabs(options.state);
         this.render();
-    },
-
-    tabChanged: function (state) {
-        if (this.tabName === state.get('tab')) {
-            this.$el.show();
-        } else {
-            this.$el.hide();
-        }
     },
 
     render: function() {

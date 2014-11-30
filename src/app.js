@@ -3,7 +3,7 @@ var Router = require('./router');
 var StateModel = require('./models/state');
 var fetchHelper = require('./utils/fetch_helper');
 var CitySelectView = require('./views/city_select');
-var ForecastTabView = require('./views/forecast_tab_view');
+var ForecastTabsView = require('./views/forecast_tabs');
 var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
 var ForecastHoursView = require('./views/forecast_hours');
@@ -16,12 +16,9 @@ var initialize = function () {
 
     var state = new StateModel();
 
-    new Router({state: state});
-    new ForecastTabView({state: state});
-
     state.on('change:geoid', function () {
-        fetchHelper(state.get('geoid')).then(function (data) {
 
+        fetchHelper(state.get('geoid')).then(function (data) {
             state.set('locality', data.locality);
 
             new CitySelectView({
@@ -55,6 +52,12 @@ var initialize = function () {
                 state: state,
             });
         });
+    });
+
+    new Router({state: state});
+    new ForecastTabsView({
+        el: $('.tabs'),
+        state: state
     });
 
     Backbone.history.start({pushState: true});

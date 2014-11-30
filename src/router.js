@@ -11,6 +11,16 @@ var Router = Backbone.Router.extend({
 
     initialize: function (options) {
         this.state = options.state;
+        this.state.on('change', function (state) {
+            var geoid = state.get('geoid'),
+                tab = state.get('tab');
+            if (geoid !== undefined && tab !== undefined) {
+                Backbone.history.navigate(
+                    geoid + '/' + tab,
+                    { trigger: true }
+                );
+            }
+        });
     },
 
     autoDetect: function () {
@@ -18,7 +28,7 @@ var Router = Backbone.Router.extend({
 
         geolocator()
             .then(function (data) {
-                self.state.set({geoid: data.geoid});
+                self.state.set('geoid', data.geoid);
             });
     },
 
