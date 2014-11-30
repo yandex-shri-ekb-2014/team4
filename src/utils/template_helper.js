@@ -41,3 +41,9 @@ Handlebars.registerHelper('t', function(key) {
 
     return key;
 });
+
+Handlebars.registerHelper('windSpeed', function(windSpeed) {
+    windSpeed = (windSpeed * 36)/10
+
+    return windSpeed;
+});
