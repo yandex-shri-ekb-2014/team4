@@ -11,6 +11,7 @@ var ForecastShortView = require('./views/forecast_short');
 var ForecastFullView = require('./views/forecast_full');
 var ForecastHoursView = require('./views/forecast_hours');
 var NowView = require('./views/now');
+var TitleView = require('./views/title');
 
 require('./utils/template_helper');
 
@@ -71,6 +72,11 @@ var initialize = function () {
 
     new CitySelectView({
         el: $('.city-select'),
+        model: state
+    });
+
+    new TitleView({
+        el: $('title'),
         model: state
     });
 

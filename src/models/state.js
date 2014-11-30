@@ -23,7 +23,12 @@ var StateModel = Backbone.Model.extend({
                 }
             };
 
-            recent.push(locality);
+            recent.unshift(locality);
+
+            if (recent.length > 3) {
+                recent = recent.slice(0, 3);
+            }
+
             this.set({recent: recent});
 
             // @todo this.set don't trigger events =\
