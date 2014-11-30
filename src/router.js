@@ -6,7 +6,8 @@ var Router = Backbone.Router.extend({
 
     routes: {
         '': 'autoDetect',
-        ':geoid/:tab': 'index',
+        ':geoid': 'index',
+        ':geoid/:tab': 'index'
     },
 
     initialize: function (options) {
@@ -37,7 +38,7 @@ var Router = Backbone.Router.extend({
     index: function (geoid, tab) {
         this.state.set({
             geoid: geoid,
-            tab: tab
+            tab: tab || 'short'
         });
     }
 });
