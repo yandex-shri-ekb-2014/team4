@@ -21,6 +21,8 @@ var ForecastFullView = TabPaneView.extend({
         this.$el.html(forecastFullTemplate({
             days: daysHtml
         }));
+        this.trigger('rendered',{});
+        console.log('Rendered');
     }
 });
 
