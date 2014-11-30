@@ -45,6 +45,7 @@ var initialize = function () {
                 today: data.today,
                 yesterday: data.yesterday,
                 state: state,
+                collection: data.forecast
             });
         });
     });
