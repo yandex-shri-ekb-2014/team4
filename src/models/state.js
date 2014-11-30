@@ -5,14 +5,31 @@ var StateModel = Backbone.Model.extend({
         tab: 'short',
         geoid: null,
         locality: null,
-        recent: [
-            {
-              'geoid': 54,
-              'name': 'Екатеринбург',
-              'provinceId': 11162,
-              'countryId': 225
-            }
-        ]
+        recent: []
+    },
+
+    initialize: function () {
+        this.on('change:locality', this.addRecent, this);
+    },
+
+    addRecent: function (state) {
+        var recent = this.get('recent');
+        var locality = state.get('locality');
+
+        if (locality) {
+            for (var i = recent.length - 1; i >= 0; i--) {
+                if (recent[i].geoid === locality.geoid) {
+                    return;
+                }
+            };
+
+            recent.push(locality);
+            this.set({recent: recent});
+
+            // @todo this.set don't trigger events =\
+            this.trigger('change', this);
+            this.trigger('change:recent', this);
+        }
     }
 });
 
