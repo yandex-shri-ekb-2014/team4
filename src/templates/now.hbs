@@ -3,7 +3,7 @@
                             <div class="current-weather_columns_row">
                                 <div class="current-weather_column current-weather_column__now">
                                     <div class="current-weather_title">Сейчас</div>
-                                    <div class="current-weather_content" style="background-color: #{{temp2color parts.0.temp}}">
+                                    <div class="current-weather_content" style="background: url('http://yandex.st/weather/_/iy-ZbqH20-0JN8CK1eeaYd-YKe4.png') repeat-y right #{{temp2color parts.0.temp}}">
                                         <div class="current-weather_column-container">
                                             <div class="current-weather_temp-value">{{parts.0.temp}} &deg;C</div>
                                             <div class="current-weather_icon">
@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="current-weather_column">
                                     <div class="current-weather_title">{{t parts.1.type}}</div>
-                                    <div class="current-weather_content" style="background-color: #{{temp2color parts.1.temp}}">
+                                    <div class="current-weather_content" style="background: url('http://yandex.st/weather/_/iy-ZbqH20-0JN8CK1eeaYd-YKe4.png') repeat-y right #{{temp2color parts.1.temp}}">
                                         <div class="current-weather_column-container">
                                             <div class="current-weather_temp-value">{{parts.1.temp}} &deg;C</div>
                                             <div class="current-weather_icon">
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="current-weather_column">
                                     <div class="current-weather_title">{{t parts.2.type}}</div>
-                                    <div class="current-weather_content" style="background-color: #{{temp2color parts.2.temp}}">
+                                    <div class="current-weather_content" style="background: url('http://yandex.st/weather/_/iy-ZbqH20-0JN8CK1eeaYd-YKe4.png') repeat-y right #{{temp2color parts.2.temp}}">
                                         <div class="current-weather_column-container">
                                             <div class="current-weather_temp-value">{{parts.2.temp}} &deg;C</div>
                                             <div class="current-weather_icon">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="current-weather_column">
                                     <div class="current-weather_title">{{t parts.3.type}}</div>
-                                    <div class="current-weather_content" style="background-color: #{{temp2color parts.3.temp}}">
+                                    <div class="current-weather_content" style="background: url('http://yandex.st/weather/_/iy-ZbqH20-0JN8CK1eeaYd-YKe4.png') repeat-y right #{{temp2color parts.3.temp}}">
                                         <div class="current-weather_column-container">
                                             <div class="current-weather_temp-value">{{parts.3.temp}} &deg;C</div>
                                             <div class="current-weather_icon">
@@ -65,5 +65,5 @@
                         </div>
                     </div>
                     <div class="current-weather_footer">
-                        Вчера +10 &deg;
+                        Вчера {{yesterday_temp}} &deg;
                     </div>
